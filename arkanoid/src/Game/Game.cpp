@@ -50,6 +50,12 @@ int Game::_init_objects()
 	txt = new TextAsset(font, "To jest testowy napis");
 
 	eve = new SDL_Event();
+
+	if (SDL_NumJoysticks() < 1)
+		throwError(__FUNCTION__, "You must connect joystick first!");
+	else
+		joystick = SDL_JoystickOpen(0);
+
 	return 0;
 }
 
@@ -63,6 +69,7 @@ void Game::run()
 {
 	while (running)
 	{
+		handleDef();
 		events();
 		update();
 
@@ -89,5 +96,18 @@ void Game::events()
 	if (eve->type == SDL_QUIT || eve->type == SDL_KEYDOWN && eve->key.keysym.sym == SDLK_ESCAPE)
 	{
 		running = false;
+	}
+
+	if (eve->type == SDL_JOYAXISMOTION)
+	{
+		if (eve->jaxis.axis == 0)
+		{
+			std::cout << "Value axis: " << eve->jaxis.value << std::endl;
+		}
+	}
+	if (eve->type == SDL_JOYBUTTONDOWN)
+	{
+		if (eve->jbutton.which == 0)
+			std::cout << "Button: " << (int)eve->jbutton.button << std::endl;
 	}
 }

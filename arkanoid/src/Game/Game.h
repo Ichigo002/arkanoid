@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <string>
+#include <iostream>
 
 #include "../ErrorHandler/ErrorHandler.h"
 #include "../TextAsset/TextAsset.h"
@@ -28,6 +29,8 @@ private:
 
 	FontAsset* font;
 	TextAsset* txt;
+
+	SDL_Joystick* joystick;
 
 	bool running;
 };

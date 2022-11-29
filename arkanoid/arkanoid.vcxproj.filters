@@ -33,6 +33,9 @@
     <ClCompile Include="src\Vector2Int\Vector2Int.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\KeyJoy\KeyJoy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Vector2Int\Vector2Int.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\KeyJoy\KeyJoy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
