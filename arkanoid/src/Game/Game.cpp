@@ -44,7 +44,7 @@ int Game::_init_SDL()
 
 int Game::_init_objects()
 {
-	
+	font = new FontAsset(r, "assets/fonts/", 22,)
 	eve = new SDL_Event();
 	return 0;
 }

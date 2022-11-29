@@ -5,6 +5,7 @@
 #include <string>
 
 #include "../ErrorHandler/ErrorHandler.h"
+#include "../TextAsset/TextAsset.h"
 
 class Game
 {
@@ -24,6 +25,8 @@ private:
 	SDL_Window* win;
 	SDL_Renderer* ren;
 	SDL_Event* eve;
+
+	FontAsset* font;
 
 	bool running;
 };

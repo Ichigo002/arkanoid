@@ -24,6 +24,15 @@
     <ClCompile Include="src\ErrorHandler\ErrorHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\TextAsset\FontAsset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextAsset\TextAsset.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Vector2Int\Vector2Int.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -32,5 +41,47 @@
     <ClInclude Include="src\ErrorHandler\ErrorHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\TextAsset\FontAsset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextAsset\TextAsset.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Vector2Int\Vector2Int.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\Fonts\prstart.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\Texture\background menu.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\game over.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\help.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\Objects.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\win.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\Effects\start_game.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\Effects\hit_paddle.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL2_ttf.dll" />
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
   </ItemGroup>
 </Project>

@@ -158,10 +158,35 @@
     <ClCompile Include="src\ErrorHandler\ErrorHandler.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\TextAsset\FontAsset.cpp" />
+    <ClCompile Include="src\TextAsset\TextAsset.cpp" />
+    <ClCompile Include="src\Vector2Int\Vector2Int.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ErrorHandler\ErrorHandler.h" />
     <ClInclude Include="src\Game\Game.h" />
+    <ClInclude Include="src\TextAsset\FontAsset.h" />
+    <ClInclude Include="src\TextAsset\TextAsset.h" />
+    <ClInclude Include="src\Vector2Int\Vector2Int.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="assets\Fonts\prstart.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\Texture\background menu.bmp" />
+    <Image Include="assets\Texture\game over.bmp" />
+    <Image Include="assets\Texture\help.bmp" />
+    <Image Include="assets\Texture\Objects.bmp" />
+    <Image Include="assets\Texture\win.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\Effects\hit_paddle.wav" />
+    <Media Include="assets\Effects\start_game.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="SDL2_ttf.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
