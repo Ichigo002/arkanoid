@@ -27,6 +27,7 @@ private:
 	SDL_Event* eve;
 
 	FontAsset* font;
+	TextAsset* txt;
 
 	bool running;
 };

@@ -1,30 +1,27 @@
 #include "TextAsset.h"
 #include "FontAsset.h"
 
-TextAsset::TextAsset(FontAsset* asset, bool ui_mode)
+TextAsset::TextAsset(FontAsset* asset)
 {
 	this->asset = asset;
-	this->ui_mode = ui_mode;
 	start_pos = Vector2Int(0, 0);
 	spacing = 0;
 	setText("Default Text");
 }
 
-TextAsset::TextAsset(FontAsset* asset, Vector2Int start_pos, int letter_spacing, bool ui_mode)
+TextAsset::TextAsset(FontAsset* asset, Vector2Int start_pos, int letter_spacing)
 {
 	this->asset = asset;
 	this->start_pos = start_pos;
-	this->ui_mode = ui_mode;
 	spacing = letter_spacing;
 	setText("Default Text");
 }
 
-TextAsset::TextAsset(FontAsset* asset, std::string txt, bool ui_mode)
+TextAsset::TextAsset(FontAsset* asset, std::string txt)
 {
 	start_pos = Vector2Int(0, 0);
 	spacing = 0;
 	this->asset = asset;
-	this->ui_mode = ui_mode;
 	setText(txt);
 }
 
@@ -35,6 +32,12 @@ TextAsset::~TextAsset()
 void TextAsset::setText(std::string txt)
 {
 	this->txt = txt;
+}
+
+void TextAsset::setGraphicEffects(double angle, SDL_RendererFlip flip)
+{
+	this->angle = angle;
+	this->flip = flip;
 }
 
 void TextAsset::setLetterSpacing(int s)
@@ -74,7 +77,7 @@ void TextAsset::draw()
 				if (obj->c == txt[i])
 				{
 					SDL_QueryTexture(obj->tex, nullptr, nullptr, &r.w, &r.h);
-					SDL_RenderCopyEx(asset->__getren(), obj->tex, NULL, &r, 0, NULL, SDL_FLIP_HORIZONTAL);
+					SDL_RenderCopyEx(asset->__getren(), obj->tex, NULL, &r, angle, NULL, flip);
 					r.x += r.w + spacing;
 					drawn = true;
 					break;
@@ -83,7 +86,7 @@ void TextAsset::draw()
 			if (!drawn)
 			{
 				SDL_QueryTexture(asset->__getglyphs()[0]->tex, nullptr, nullptr, &r.w, &r.h);
-				SDL_RenderCopyEx(asset->__getren(), asset->__getglyphs()[0]->tex, NULL, &r, 0, NULL, SDL_FLIP_HORIZONTAL);
+				SDL_RenderCopyEx(asset->__getren(), asset->__getglyphs()[0]->tex, NULL, &r, angle, NULL, flip);
 				r.x += r.w + spacing;
 			}
 		}

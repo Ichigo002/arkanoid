@@ -8,12 +8,9 @@
 class TextAsset
 {
 public:
-	/// ui_mode -> if true then text is drown as UI not as object in game
-	TextAsset(FontAsset* asset, bool ui_mode = true);
-	/// ui_mode -> if true then text is drown as UI not as object in game
-	TextAsset(FontAsset* asset, Vector2Int start_pos, int letter_spacing, bool ui_mode = true);
-	/// ui_mode -> if true then text is drown as UI not as object in game
-	TextAsset(FontAsset* asset, std::string txt, bool ui_mode = true);
+	TextAsset(FontAsset* asset);
+	TextAsset(FontAsset* asset, Vector2Int start_pos, int letter_spacing);
+	TextAsset(FontAsset* asset, std::string txt);
 	~TextAsset();
 
 	/// <summary>
@@ -21,6 +18,8 @@ public:
 	/// </summary>
 	/// <param name="txt">text message</param>
 	void setText(std::string txt);
+
+	void setGraphicEffects(double angle = 0, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 	/// <summary>
 	/// Space between single letters
@@ -44,6 +43,8 @@ private:
 	std::string txt;
 	Vector2Int start_pos;
 	int spacing;
+	double angle;
+	SDL_RendererFlip flip;
 };
 
 #endif

@@ -27,8 +27,8 @@ int Game::_init_SDL()
 
 	win = SDL_CreateWindow("Arkanoid 2.0 WRBI",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		300, 600, flags);
-
+		675, 720, flags);
+	// 225x240 * 3 => 675x720
 	if (win == NULL)
 		return -2;
 
@@ -44,7 +44,11 @@ int Game::_init_SDL()
 
 int Game::_init_objects()
 {
-	font = new FontAsset(r, "assets/fonts/", 22,)
+	SDL_Color col = { 255, 255, 0 };
+	font = new FontAsset(ren, "assets/fonts/prstart.ttf", 25, col);
+
+	txt = new TextAsset(font, "To jest testowy napis");
+
 	eve = new SDL_Event();
 	return 0;
 }
@@ -75,7 +79,7 @@ void Game::update()
 
 void Game::draw()
 {
-
+	txt->draw();
 }
 
 void Game::events()
