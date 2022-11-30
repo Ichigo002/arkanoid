@@ -29,7 +29,7 @@ void MenuScene::draw()
 
 void MenuScene::OnLoad()
 {
-	txt->setStartingPos(300, 0);
+	txt->setStartingPos(30, 500);
 	txt->setText("MenuScene test !!!");
 }
 

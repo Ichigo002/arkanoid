@@ -8,7 +8,7 @@ class Scene
 public:
 	Scene(SDL_Renderer* r, SDL_Event* e)
 		: ren(r), eve(e) { ; }
-	virtual ~Scene() = 0;
+	virtual ~Scene() { ; }
 
 	virtual void update() = 0;
 	virtual void events() = 0;
