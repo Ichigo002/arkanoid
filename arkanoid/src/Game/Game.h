@@ -7,6 +7,7 @@
 
 #include "../ErrorHandler/ErrorHandler.h"
 #include "../TextAsset/TextAsset.h"
+#include "../SceneManager/SceneManager.h";
 
 class Game
 {
