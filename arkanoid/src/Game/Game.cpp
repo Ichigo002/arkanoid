@@ -56,6 +56,11 @@ int Game::_init_objects()
 	else
 		joystick = SDL_JoystickOpen(0);
 
+	sman = new SceneManager(ren, eve);
+
+	int id = sman->addScene<MenuScene>();
+	sman->loadScene(id);
+
 	return 0;
 }
 
@@ -81,12 +86,13 @@ void Game::run()
 
 void Game::update()
 {
-
+	sman->update();
 }
 
 void Game::draw()
 {
 	txt->draw();
+	sman->draw();
 }
 
 void Game::events()
@@ -110,4 +116,6 @@ void Game::events()
 		if (eve->jbutton.which == 0)
 			std::cout << "Button: " << (int)eve->jbutton.button << std::endl;
 	}
+
+	sman->events();
 }

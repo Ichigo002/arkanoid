@@ -8,6 +8,7 @@
 #include "../ErrorHandler/ErrorHandler.h"
 #include "../TextAsset/TextAsset.h"
 #include "../SceneManager/SceneManager.h";
+#include "../Scenes/AllScenes.h"
 
 class Game
 {
@@ -30,6 +31,8 @@ private:
 
 	FontAsset* font;
 	TextAsset* txt;
+
+	SceneManager* sman;
 
 	SDL_Joystick* joystick;
 
