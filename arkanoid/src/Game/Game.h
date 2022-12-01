@@ -9,6 +9,7 @@
 #include "../TextAsset/TextAsset.h"
 #include "../SceneManager/SceneManager.h";
 #include "../Scenes/AllScenes.h"
+#include "../KeyJoy/KeyJoy.h"
 
 class Game
 {
@@ -29,12 +30,7 @@ private:
 	SDL_Renderer* ren;
 	SDL_Event* eve;
 
-	FontAsset* font;
-	TextAsset* txt;
-
 	SceneManager* sman;
-
-	SDL_Joystick* joystick;
 
 	bool running;
 };

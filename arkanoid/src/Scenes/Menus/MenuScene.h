@@ -1,8 +1,9 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "../SceneManager/Scene.h"
-#include "../TextAsset/TextAsset.h"
+#include "../../SceneManager/Scene.h"
+#include "../../TextAsset/TextAsset.h"
+#include "../../KeyJoy/KeyJoy.h"
 
 class MenuScene : public Scene
 {
@@ -21,6 +22,7 @@ protected:
 	FontAsset* font;
 	TextAsset* txt;
 
+	KeyJoy* kj;
 };
 
 #endif

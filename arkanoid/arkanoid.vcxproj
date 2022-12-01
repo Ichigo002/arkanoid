@@ -160,7 +160,12 @@
     <ClCompile Include="src\KeyJoy\KeyJoy.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\SceneManager\SceneManager.cpp" />
-    <ClCompile Include="src\Scenes\MenuScene.cpp" />
+    <ClCompile Include="src\Scenes\Ends\LoseScene.cpp" />
+    <ClCompile Include="src\Scenes\Ends\WinScene.cpp" />
+    <ClCompile Include="src\Scenes\Levels\Lvl1Scene.cpp" />
+    <ClCompile Include="src\Scenes\Levels\Lvl2Scene.cpp" />
+    <ClCompile Include="src\Scenes\Levels\Lvl3Scene.cpp" />
+    <ClCompile Include="src\Scenes\Menus\MenuScene.cpp" />
     <ClCompile Include="src\TextAsset\FontAsset.cpp" />
     <ClCompile Include="src\TextAsset\TextAsset.cpp" />
     <ClCompile Include="src\Vector2Int\Vector2Int.cpp" />
@@ -173,7 +178,12 @@
     <ClInclude Include="src\SceneManager\SceneManager.h" />
     <ClInclude Include="src\SceneManager\SMBroker.h" />
     <ClInclude Include="src\Scenes\AllScenes.h" />
-    <ClInclude Include="src\Scenes\MenuScene.h" />
+    <ClInclude Include="src\Scenes\Ends\LoseScene.h" />
+    <ClInclude Include="src\Scenes\Ends\WinScene.h" />
+    <ClInclude Include="src\Scenes\Levels\Lvl1Scene.h" />
+    <ClInclude Include="src\Scenes\Levels\Lvl2Scene.h" />
+    <ClInclude Include="src\Scenes\Levels\Lvl3Scene.h" />
+    <ClInclude Include="src\Scenes\Menus\MenuScene.h" />
     <ClInclude Include="src\Scenes\PatternScene.h" />
     <ClInclude Include="src\TextAsset\FontAsset.h" />
     <ClInclude Include="src\TextAsset\TextAsset.h" />
