@@ -32,6 +32,28 @@ public:
 
 /* --- READY CONTROLS */
 
+	/// <returns>Move in direction: Left = -1, Right = 1</returns>
+	float getAction_MoveLR();
+
+	/// <returns>Move in direction: Up = -1, Down = 1</returns>
+	float getAction_MoveUD();
+
+	/// <returns>true if accept button clicked</returns>
+	bool getAction_Accept();
+
+	/// <returns>true if cancel button clicked</returns>
+	bool getAction_Cancel();
+
+	/// <returns>true if clicked button to go to next option in menu</returns>
+	bool getAction_Next();
+
+	/// <returns>true if clicked button to go to previous option in menu</returns>
+	bool getAction_Prev();
+
+	/// <returns>true if pause button clicked to stop game</returns>
+	bool getAction_Pause();
+
+	//bool getAction_()
 
 	/// <summary>
 	/// Shall be called before other keyjoy methods every new frame
@@ -65,9 +87,9 @@ public:
 
 /* --- KEYBOARD METHODS */
 
+	bool getPressedKey(SDL_KeyCode key);
 
-
-	
+	bool getReleasedKey(SDL_Keycode key);
 
 private:
 	SDL_Joystick* joy;
@@ -78,6 +100,8 @@ private:
 
 	short int lastAxisHorV; // last axis horizontal value
 	short int lastAxisVerV; // last axis vertical value
+
+	int kp_LR;
 };
 
 #endif

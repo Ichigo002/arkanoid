@@ -23,7 +23,8 @@ void MenuScene::events()
 {
 	kj->events();
 
-	txt->setText(std::to_string(kj->getMoveAxisVer()));
+	txt->setText("Clicked flaot v: " + std::to_string(kj->getAction_MoveLR()));
+	//txt->setText(std::to_string(kj->getMoveAxisVer()));
 	//std::cout << kj->getMoveAxisHor() << std::endl;
 
 	if (kj->getPressedJoystickButton(JoystickButtons::LSB))

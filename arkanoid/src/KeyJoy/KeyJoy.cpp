@@ -6,10 +6,64 @@ KeyJoy::KeyJoy(SDL_Event* eve)
 	checkConnectionJoystick();
 
 	SetDeadZone(7500);
+
+	kp_LR = 0;
 }
 
 KeyJoy::~KeyJoy()
 {
+}
+
+float KeyJoy::getAction_MoveLR()
+{
+	if (jsconn)
+	{
+		float v = getMoveAxisHor();
+		if (v != 0)
+			return v;
+	}
+
+	if (getPressedKey(SDLK_a) || getPressedKey(SDLK_LEFT))
+		kp_LR = -1;
+
+	if (getPressedKey(SDLK_d) || getPressedKey(SDLK_RIGHT))
+		kp_LR = 1;
+	/// ------------ ///
+	if (getReleasedKey(SDLK_a) || getReleasedKey(SDLK_LEFT) 
+		|| getReleasedKey(SDLK_d) || getReleasedKey(SDLK_RIGHT))
+		kp_LR = 0;
+
+	return kp_LR;
+}
+
+float KeyJoy::getAction_MoveUD()
+{
+	return 0.0f;
+}
+
+bool KeyJoy::getAction_Accept()
+{
+	return false;
+}
+
+bool KeyJoy::getAction_Cancel()
+{
+	return false;
+}
+
+bool KeyJoy::getAction_Next()
+{
+	return false;
+}
+
+bool KeyJoy::getAction_Prev()
+{
+	return false;
+}
+
+bool KeyJoy::getAction_Pause()
+{
+	return false;
 }
 
 float KeyJoy::getMoveAxisHor()
@@ -81,6 +135,14 @@ void KeyJoy::checkConnectionJoystick()
 void KeyJoy::SetDeadZone(short int deadzone)
 {
 	this->deadzone = deadzone;
+}
+bool KeyJoy::getPressedKey(SDL_KeyCode key)
+{
+	return eve->type == SDL_KEYDOWN && eve->key.keysym.sym == key;
+}
+bool KeyJoy::getReleasedKey(SDL_Keycode key)
+{
+	return eve->type == SDL_KEYUP && eve->key.keysym.sym == key;
 }
 void KeyJoy::events()
 {
