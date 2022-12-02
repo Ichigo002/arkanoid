@@ -38,7 +38,24 @@ float KeyJoy::getAction_MoveLR()
 
 float KeyJoy::getAction_MoveUD()
 {
-	return 0.0f;
+	if (jsconn)
+	{
+		float v = getMoveAxisVer();
+		if (v != 0)
+			return v;
+	}
+
+	if (getPressedKey(SDLK_w) || getPressedKey(SDLK_UP))
+		kp_UD = -1;
+
+	if (getPressedKey(SDLK_s) || getPressedKey(SDLK_DOWN))
+		kp_UD = 1;
+	/// ------------ ///
+	if (getReleasedKey(SDLK_w) || getReleasedKey(SDLK_UP)
+		|| getReleasedKey(SDLK_s) || getReleasedKey(SDLK_DOWN))
+		kp_UD = 0;
+
+	return kp_UD;
 }
 
 bool KeyJoy::getAction_Accept()

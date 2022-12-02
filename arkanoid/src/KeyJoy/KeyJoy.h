@@ -101,7 +101,8 @@ private:
 	short int lastAxisHorV; // last axis horizontal value
 	short int lastAxisVerV; // last axis vertical value
 
-	int kp_LR;
+	int kp_LR; // move speed left right
+	int kp_UD; // move speed up down
 };
 
 #endif
