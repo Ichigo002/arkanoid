@@ -32,24 +32,31 @@ public:
 
 /* --- READY CONTROLS */
 
+	// Control: X Axis ; A,D ; LEFT,RIGHT 
 	/// <returns>Move in direction: Left = -1, Right = 1</returns>
 	float getAction_MoveLR();
 
+	// Control: Y Axis ; W,S ; UP,DOWN
 	/// <returns>Move in direction: Up = -1, Down = 1</returns>
 	float getAction_MoveUD();
 
+	// Control: A ; ENTER
 	/// <returns>true if accept button clicked</returns>
 	bool getAction_Accept();
 
+	// Control: B ; BACKSPACE
 	/// <returns>true if cancel button clicked</returns>
 	bool getAction_Cancel();
 
+	// Control: Only_Down Y Axis ; S ; DOWN
 	/// <returns>true if clicked button to go to next option in menu</returns>
 	bool getAction_Next();
 
+	// Control: Only_Up Y Axis ; W ; UP
 	/// <returns>true if clicked button to go to previous option in menu</returns>
 	bool getAction_Prev();
 
+	// Control: BACK ; ESCAPE
 	/// <returns>true if pause button clicked to stop game</returns>
 	bool getAction_Pause();
 
@@ -87,9 +94,11 @@ public:
 
 /* --- KEYBOARD METHODS */
 
-	bool getPressedKey(SDL_KeyCode key);
-
-	bool getReleasedKey(SDL_Keycode key);
+	/// <param name="extra_no">If key is not booked in SDL_KeyCode then type keycode at int. Then keyCode is meaningless</param>
+	bool getPressedKey(SDL_KeyCode key, int extra_no = -1);
+	
+	/// <param name="extra_no">If key is not booked in SDL_KeyCode then type keycode at int. Then keyCode is meaningless</param>
+	bool getReleasedKey(SDL_Keycode key, int extra_no = -1);
 
 private:
 	SDL_Joystick* joy;
@@ -101,8 +110,11 @@ private:
 	short int lastAxisHorV; // last axis horizontal value
 	short int lastAxisVerV; // last axis vertical value
 
-	int kp_LR; // move speed left right
-	int kp_UD; // move speed up down
+	int kp_LR; // move: left right
+	int kp_UD; // move: up down
+
+	bool js_action_next; // unclick next action
+	bool js_action_prev; // unclick next action
 };
 
 #endif

@@ -60,27 +60,49 @@ float KeyJoy::getAction_MoveUD()
 
 bool KeyJoy::getAction_Accept()
 {
-	return false;
+	if(jsconn && getPressedJoystickButton(JoystickButtons::Bottom))
+		return true;
+	return getPressedKey(SDLK_0, 13); // 13 -> Enter
 }
 
 bool KeyJoy::getAction_Cancel()
 {
-	return false;
+	if (jsconn && getPressedJoystickButton(JoystickButtons::Right))
+		return true;
+	return getPressedKey(SDLK_BACKSPACE);
 }
 
 bool KeyJoy::getAction_Next()
 {
-	return false;
+	if (js_action_next && getMoveAxisVer() == 0)
+		js_action_next = false;
+
+	if (jsconn && !js_action_next && getMoveAxisVer() > 0)
+	{
+		js_action_next = true;
+		return true;
+	}
+	return getPressedKey(SDLK_DOWN) || getPressedKey(SDLK_s);
 }
 
 bool KeyJoy::getAction_Prev()
 {
-	return false;
+	if (js_action_prev && getMoveAxisVer() == 0)
+		js_action_prev = false;
+
+	if (jsconn && !js_action_prev && getMoveAxisVer() < 0)
+	{
+		js_action_prev = true;
+		return true;
+	}
+	return getPressedKey(SDLK_UP) || getPressedKey(SDLK_w);
 }
 
 bool KeyJoy::getAction_Pause()
 {
-	return false;
+	if (jsconn && getPressedJoystickButton(JoystickButtons::Back))
+		return true;
+	return getPressedKey(SDLK_ESCAPE);
 }
 
 float KeyJoy::getMoveAxisHor()
@@ -153,13 +175,13 @@ void KeyJoy::SetDeadZone(short int deadzone)
 {
 	this->deadzone = deadzone;
 }
-bool KeyJoy::getPressedKey(SDL_KeyCode key)
+bool KeyJoy::getPressedKey(SDL_KeyCode key, int extra_no)
 {
-	return eve->type == SDL_KEYDOWN && eve->key.keysym.sym == key;
+	return eve->type == SDL_KEYDOWN && ((extra_no == -1 && eve->key.keysym.sym == key) || eve->key.keysym.sym == extra_no);
 }
-bool KeyJoy::getReleasedKey(SDL_Keycode key)
+bool KeyJoy::getReleasedKey(SDL_Keycode key, int extra_no)
 {
-	return eve->type == SDL_KEYUP && eve->key.keysym.sym == key;
+	return eve->type == SDL_KEYUP && ((extra_no == -1 && eve->key.keysym.sym == key) || eve->key.keysym.sym == extra_no);
 }
 void KeyJoy::events()
 {

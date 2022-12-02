@@ -23,7 +23,7 @@ void MenuScene::events()
 {
 	kj->events();
 
-	txt->setText("Clicked flaot: " + std::to_string(kj->getAction_MoveUD()));
+	txt->setText("Clicked: " + std::to_string(kj->getAction_Prev()));
 }
 
 void MenuScene::draw()
