@@ -116,6 +116,9 @@
     <ClInclude Include="src\AudioPlayer\AudioPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\TextureManager\TextureManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\Fonts\prstart.ttf" />
