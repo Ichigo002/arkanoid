@@ -89,13 +89,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\include;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\lib\x64;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -107,15 +107,15 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\include;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\lib\x64;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,13 +125,13 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\include;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\lib\x64;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,15 +143,15 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\include;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\include;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\include;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\C++ Libs\SDL2_mixer-devel-2.6.1-VC\lib\x64;D:\C++ Libs\SDL2_image-devel-2.6.2-VC\SDL2_image-2.6.2\lib\x64;D:\C++ Libs\SDL2_ttf-devel-2.20.1-VC\SDL2_ttf-2.20.1\lib\x64;D:\C++ Libs\SDL2-devel-2.24.0-VC\SDL2-2.24.0\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -166,6 +166,7 @@
     <ClCompile Include="src\Scenes\Levels\Lvl2Scene.cpp" />
     <ClCompile Include="src\Scenes\Levels\Lvl3Scene.cpp" />
     <ClCompile Include="src\Scenes\Menus\MenuScene.cpp" />
+    <ClCompile Include="src\SoundManager\SoundManager.cpp" />
     <ClCompile Include="src\TextAsset\FontAsset.cpp" />
     <ClCompile Include="src\TextAsset\TextAsset.cpp" />
     <ClCompile Include="src\Vector2Int\Vector2Int.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="src\Scenes\Levels\Lvl3Scene.h" />
     <ClInclude Include="src\Scenes\Menus\MenuScene.h" />
     <ClInclude Include="src\Scenes\PatternScene.h" />
+    <ClInclude Include="src\SoundManager\SoundManager.h" />
     <ClInclude Include="src\TextAsset\FontAsset.h" />
     <ClInclude Include="src\TextAsset\TextAsset.h" />
     <ClInclude Include="src\Vector2Int\Vector2Int.h" />
@@ -206,6 +208,7 @@
   <ItemGroup>
     <None Include="SDL2.dll" />
     <None Include="SDL2_image.dll" />
+    <None Include="SDL2_mixer.dll" />
     <None Include="SDL2_ttf.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

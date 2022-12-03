@@ -4,6 +4,7 @@
 #include "../../SceneManager/Scene.h"
 #include "../../TextAsset/TextAsset.h"
 #include "../../KeyJoy/KeyJoy.h"
+#include <SDL_mixer.h>
 
 class MenuScene : public Scene
 {
@@ -23,6 +24,9 @@ protected:
 	TextAsset* txt;
 
 	KeyJoy* kj;
+
+	Mix_Music* music;
+	Mix_Chunk* sound;
 };
 
 #endif
