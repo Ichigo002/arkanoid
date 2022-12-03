@@ -164,7 +164,6 @@
     <ClCompile Include="src\SceneManager\SceneManager.cpp" />
     <ClCompile Include="src\Scenes\Ends\LoseScene.cpp" />
     <ClCompile Include="src\Scenes\Ends\WinScene.cpp" />
-    <ClCompile Include="src\Scenes\Levels\LevelSceneAbstract.cpp" />
     <ClCompile Include="src\Scenes\Levels\Lvl1Scene.cpp" />
     <ClCompile Include="src\Scenes\Levels\Lvl2Scene.cpp" />
     <ClCompile Include="src\Scenes\Levels\Lvl3Scene.cpp" />

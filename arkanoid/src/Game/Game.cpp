@@ -48,9 +48,10 @@ int Game::_init_objects()
 
 	sman = new SceneManager(ren, eve);
 
-	int id = sman->addScene<MenuScene>();
-	sman->loadScene(id);
+	sman->addScene<MenuScene>();
+	sman->addScene<Lvl1Scene>();
 
+	sman->loadScene(0);
 	return 0;
 }
 

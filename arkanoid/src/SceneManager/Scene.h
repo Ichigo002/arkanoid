@@ -1,5 +1,5 @@
-#ifndef SCENE_H
-#define SCENE_H
+#ifndef LEVEL_SCENE_ABSTRACT_H
+#define LEVEL_SCENE_ABSTRACT_H
 
 #include <SDL.h>
 #include "../AudioPlayer/AudioPlayer.h"

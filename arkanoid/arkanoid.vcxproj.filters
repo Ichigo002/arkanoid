@@ -63,9 +63,6 @@
     <ClCompile Include="src\SceneManager\SceneChanger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Scenes\Levels\LevelSceneAbstract.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">

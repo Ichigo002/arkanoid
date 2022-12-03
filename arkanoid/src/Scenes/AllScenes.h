@@ -4,6 +4,7 @@
 #include "Ends/LoseScene.h"
 #include "Ends/WinScene.h"
 
+#include "Levels/LevelSceneAbstract.h"
 #include "Levels/Lvl1Scene.h"
 #include "Levels/Lvl2Scene.h"
 #include "Levels/Lvl3Scene.h"
