@@ -57,7 +57,7 @@
     <ClCompile Include="src\Scenes\Ends\LoseScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\SoundManager\SoundManager.cpp">
+    <ClCompile Include="src\AudioPlayer\AudioPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -113,7 +113,7 @@
     <ClInclude Include="src\Scenes\Ends\LoseScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\SoundManager\SoundManager.h">
+    <ClInclude Include="src\AudioPlayer\AudioPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,22 +10,13 @@ MenuScene::MenuScene(SDL_Renderer* r, SDL_Event* e)
 
 	kj = new KeyJoy(e);
 
-	Mix_Init(MIX_INIT_MP3);
-
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
-		std::cout << "Error: " << Mix_GetError() << "\n";
-
-	Mix_VolumeMusic(64);
-
-	music = Mix_LoadMUS("assets/Music/ES_A Walk in Marais - The Fly Guy Five.mp3");
-	sound = Mix_LoadWAV("assets/Effects/FunkyVoices_Female_Jane_Discovery_Aha_01.wav");
+	audio = new AudioPlayer();
+	audio->addMusic("assets/Music/ES_A Walk in Marais - The Fly Guy Five.mp3");
+	audio->addSoundEffect("assets/Effects/FunkyVoices_Female_Jane_Discovery_Aha_01.wav");
 }
 
 MenuScene::~MenuScene()
 {
-	Mix_Quit();
-	Mix_FreeChunk(sound);
-	Mix_FreeMusic(music);
 }
 
 void MenuScene::update()
@@ -36,37 +27,21 @@ void MenuScene::events()
 {
 	kj->events();
 
-	txt->setText("Clicked: " + std::to_string(kj->getAction_Prev()));
+	//txt->setText("Clicked: " + std::to_string(kj->getAction_Prev()));
 
-	if (kj->getPressedKey(SDLK_5))
+	if (kj->getAction_Prev())
 	{
-		if (Mix_PlayingMusic() == 0)
-		{
-			Mix_PlayMusic(music, -1);
-		}
-		else if (Mix_PausedMusic())
-		{
-			Mix_ResumeMusic();
-		}
+		audio->playSound(0);
+	}
+	if (kj->getAction_Pause())
+	{
+		if (audio->isPausedMusic())
+			audio->resumeMusic();
 		else
-		{
-			Mix_PauseMusic();
-		}
+			audio->pauseMusic();
 	}
-
-	if (kj->getPressedKey(SDLK_6))
-	{
-		Mix_HaltMusic();
-	}
-
-	if (kj->getPressedKey(SDLK_7))
-	{
-		Mix_PlayChannel(-1, sound, 0);
-	}
-	if (kj->getPressedKey(SDLK_8))
-	{
-		Mix_PlayChannel(-1, sound, 0);
-	}
+	if(kj->getAction_Accept())
+		audio->playMusic(0);
 }
 
 void MenuScene::draw()

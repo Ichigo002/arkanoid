@@ -49,10 +49,12 @@ public:
 	bool getAction_Cancel();
 
 	// Control: Only_Down Y Axis ; S ; DOWN
+	/// WARNING! If two same this methods are within one call frame then second and evry next method won't work
 	/// <returns>true if clicked button to go to next option in menu</returns>
 	bool getAction_Next();
 
 	// Control: Only_Up Y Axis ; W ; UP
+	/// WARNING! If two same this methods are within one call frame then second and evry next method won't work
 	/// <returns>true if clicked button to go to previous option in menu</returns>
 	bool getAction_Prev();
 

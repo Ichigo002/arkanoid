@@ -155,6 +155,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\AudioPlayer\AudioPlayer.cpp" />
     <ClCompile Include="src\ErrorHandler\ErrorHandler.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\KeyJoy\KeyJoy.cpp" />
@@ -166,12 +167,12 @@
     <ClCompile Include="src\Scenes\Levels\Lvl2Scene.cpp" />
     <ClCompile Include="src\Scenes\Levels\Lvl3Scene.cpp" />
     <ClCompile Include="src\Scenes\Menus\MenuScene.cpp" />
-    <ClCompile Include="src\SoundManager\SoundManager.cpp" />
     <ClCompile Include="src\TextAsset\FontAsset.cpp" />
     <ClCompile Include="src\TextAsset\TextAsset.cpp" />
     <ClCompile Include="src\Vector2Int\Vector2Int.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\AudioPlayer\AudioPlayer.h" />
     <ClInclude Include="src\ErrorHandler\ErrorHandler.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\KeyJoy\KeyJoy.h" />
@@ -186,7 +187,6 @@
     <ClInclude Include="src\Scenes\Levels\Lvl3Scene.h" />
     <ClInclude Include="src\Scenes\Menus\MenuScene.h" />
     <ClInclude Include="src\Scenes\PatternScene.h" />
-    <ClInclude Include="src\SoundManager\SoundManager.h" />
     <ClInclude Include="src\TextAsset\FontAsset.h" />
     <ClInclude Include="src\TextAsset\TextAsset.h" />
     <ClInclude Include="src\Vector2Int\Vector2Int.h" />
