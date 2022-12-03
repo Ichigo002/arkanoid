@@ -15,9 +15,9 @@ MenuScene::MenuScene(SDL_Renderer* r, SDL_Event* e)
 	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 		std::cout << "Error: " << Mix_GetError() << "\n";
 
-	Mix_VolumeMusic(128);
+	Mix_VolumeMusic(64);
 
-	music = Mix_LoadMUS("assets/Music/esa.wav");
+	music = Mix_LoadMUS("assets/Music/ES_A Walk in Marais - The Fly Guy Five.mp3");
 	sound = Mix_LoadWAV("assets/Effects/FunkyVoices_Female_Jane_Discovery_Aha_01.wav");
 }
 
@@ -42,9 +42,7 @@ void MenuScene::events()
 	{
 		if (Mix_PlayingMusic() == 0)
 		{
-			printf("Mix_PlayMusic: %s\n", Mix_GetError());
 			Mix_PlayMusic(music, -1);
-			printf("Mix_PlayMusic: %s\n", Mix_GetError());
 		}
 		else if (Mix_PausedMusic())
 		{
@@ -59,6 +57,15 @@ void MenuScene::events()
 	if (kj->getPressedKey(SDLK_6))
 	{
 		Mix_HaltMusic();
+	}
+
+	if (kj->getPressedKey(SDLK_7))
+	{
+		Mix_PlayChannel(-1, sound, 0);
+	}
+	if (kj->getPressedKey(SDLK_8))
+	{
+		Mix_PlayChannel(-1, sound, 0);
 	}
 }
 
