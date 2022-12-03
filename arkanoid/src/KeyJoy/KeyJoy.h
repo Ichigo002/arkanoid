@@ -102,6 +102,9 @@ public:
 	/// <param name="extra_no">If key is not booked in SDL_KeyCode then type keycode at int. Then keyCode is meaningless</param>
 	bool getReleasedKey(SDL_Keycode key, int extra_no = -1);
 
+
+	SDL_Event* getEventData();
+	SDL_Joystick* getJoystick();
 private:
 	SDL_Joystick* joy;
 	SDL_Event* eve;

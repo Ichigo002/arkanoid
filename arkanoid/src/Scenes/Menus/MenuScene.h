@@ -9,7 +9,7 @@
 class MenuScene : public Scene
 {
 public:
-	MenuScene(SDL_Renderer* r, SDL_Event* e);
+	MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k);
 	~MenuScene();
 
 	virtual void update();
@@ -22,10 +22,6 @@ public:
 protected:
 	FontAsset* font;
 	TextAsset* txt;
-
-	KeyJoy* kj;
-
-	AudioPlayer* audio;
 };
 
 #endif

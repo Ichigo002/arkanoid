@@ -2,6 +2,8 @@
 #define SCENE_MANAGER_H
 
 #include "Scene.h"
+#include "../AudioPlayer/AudioPlayer.h"
+#include "../KeyJoy/KeyJoy.h"
 #include <vector>
 #include <SDL.h>
 
@@ -27,7 +29,7 @@ public:
 	int rmvScene(int id);
 
 	/// <summary>
-	/// Load scene with id & automatically unload last loaded scene
+	/// Load scene with id and automatically unload last loaded scene
 	/// </summary>
 	/// <returns>0 on succes or negative on fail</returns>
 	int loadScene(int id);
@@ -43,6 +45,8 @@ private:
 private:
 	SDL_Renderer* ren;
 	SDL_Event* eve;
+	AudioPlayer* audio;
+	KeyJoy* kj;
 
 	std::vector<Scene*> scenes;
 	Scene* loadedScene;
@@ -51,7 +55,7 @@ private:
 template<class T>
 inline int SceneManager::addScene()
 {
-	T* s = new T(ren, eve);
+	T* s = new T(ren, audio, kj);
 	scenes.push_back(s);
 	return scenes.size() - 1;
 }

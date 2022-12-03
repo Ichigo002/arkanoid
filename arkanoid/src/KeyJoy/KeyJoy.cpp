@@ -183,6 +183,14 @@ bool KeyJoy::getReleasedKey(SDL_Keycode key, int extra_no)
 {
 	return eve->type == SDL_KEYUP && ((extra_no == -1 && eve->key.keysym.sym == key) || eve->key.keysym.sym == extra_no);
 }
+SDL_Event* KeyJoy::getEventData()
+{
+	return eve;
+}
+SDL_Joystick* KeyJoy::getJoystick()
+{
+	return joy;
+}
 void KeyJoy::events()
 {
 	checkConnectionJoystick();

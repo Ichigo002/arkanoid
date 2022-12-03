@@ -64,6 +64,7 @@ int AudioPlayer::playSound(int index)
 {
 	if (index < 0 || index >= vsound.size())
 		return -1;
+	Mix_Volume(-1, volume * 128);
 	return Mix_PlayChannel(-1, vsound[index], 0);
 }
 
@@ -74,6 +75,7 @@ int AudioPlayer::playMusic(int index, bool looped)
 	if (Mix_PlayingMusic() == 1)
 		return -2;
 	pause = false;
+	Mix_Volume(-1, volume * 128);
 	return Mix_PlayMusic(vmusic[index], 0);
 }
 

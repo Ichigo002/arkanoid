@@ -7,7 +7,8 @@
 
 #include "../ErrorHandler/ErrorHandler.h"
 #include "../TextAsset/TextAsset.h"
-#include "../SceneManager/SceneManager.h";
+#include "../SceneManager/SceneManager.h"
+//#include "../SceneManager/SceneChanger.h"
 #include "../Scenes/AllScenes.h"
 #include "../KeyJoy/KeyJoy.h"
 

@@ -3,6 +3,8 @@
 SceneManager::SceneManager(SDL_Renderer* r, SDL_Event* e)
 	: ren(r), eve(e)
 {
+	kj = new KeyJoy(e);
+	audio = new AudioPlayer();
 	loadedScene = nullptr;
 }
 

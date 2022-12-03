@@ -76,6 +76,8 @@ void Game::run()
 
 void Game::update()
 {
+	if (sceneReadyToLoad())
+		sman->loadScene(getSceneToLoad());
 	sman->update();
 }
 

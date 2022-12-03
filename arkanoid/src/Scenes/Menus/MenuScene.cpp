@@ -1,16 +1,13 @@
 #include "MenuScene.h"
 
-MenuScene::MenuScene(SDL_Renderer* r, SDL_Event* e)
-	: Scene(r, e)
+MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
+	: Scene(r, ap, k)
 {
 	SDL_Color col = { 255, 255, 0 };
 	font = new FontAsset(ren, "assets/fonts/prstart.ttf", 25, col);
 
 	txt = new TextAsset(font, "To jest testowy napis");
 
-	kj = new KeyJoy(e);
-
-	audio = new AudioPlayer();
 	audio->addMusic("assets/Music/ES_A Walk in Marais - The Fly Guy Five.mp3");
 	audio->addSoundEffect("assets/Effects/FunkyVoices_Female_Jane_Discovery_Aha_01.wav");
 }
@@ -25,7 +22,7 @@ void MenuScene::update()
 
 void MenuScene::events()
 {
-	kj->events();
+	Scene::events();
 
 	//txt->setText("Clicked: " + std::to_string(kj->getAction_Prev()));
 
@@ -40,8 +37,11 @@ void MenuScene::events()
 		else
 			audio->pauseMusic();
 	}
-	if(kj->getAction_Accept())
+	if (kj->getAction_Accept())
+	{
 		audio->playMusic(0);
+		loadScene(1);
+	}
 }
 
 void MenuScene::draw()
