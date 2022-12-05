@@ -27,8 +27,8 @@ int Game::_init_SDL()
 
 	win = SDL_CreateWindow("Arkanoid 2.0 WRBI",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		675, 720, flags);
-	// 225x240 * 3 => 675x720
+		675, 780, flags);
+	// 225x240 * 3 => 675x720 + 0x60
 	if (win == NULL)
 		return -2;
 

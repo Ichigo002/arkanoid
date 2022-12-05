@@ -194,18 +194,41 @@
     <ClInclude Include="src\Vector2Int\Vector2Int.h" />
   </ItemGroup>
   <ItemGroup>
+    <Font Include="assets\Fonts\pixel font-7.ttf" />
+    <Font Include="assets\Fonts\Pixeland.ttf" />
+    <Font Include="assets\Fonts\Pixelmania.ttf" />
     <Font Include="assets\Fonts\prstart.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\Texture\background menu.bmp" />
+    <Image Include="assets\Texture\bg_game_over.bmp" />
+    <Image Include="assets\Texture\bg_menu.png" />
+    <Image Include="assets\Texture\bg_win.png" />
+    <Image Include="assets\Texture\bg_win2.png" />
+    <Image Include="assets\Texture\bricks.png" />
     <Image Include="assets\Texture\game over.bmp" />
     <Image Include="assets\Texture\help.bmp" />
+    <Image Include="assets\Texture\levels.png" />
     <Image Include="assets\Texture\Objects.bmp" />
+    <Image Include="assets\Texture\paddle_and_ball.png" />
+    <Image Include="assets\Texture\rockets.png" />
+    <Image Include="assets\Texture\ufo.png" />
     <Image Include="assets\Texture\win.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="assets\Effects\button_clicked.mp3" />
+    <Media Include="assets\Effects\button_select.mp3" />
+    <Media Include="assets\Effects\creepy.mp3" />
+    <Media Include="assets\Effects\eeye.mp3" />
+    <Media Include="assets\Effects\hit_paddle.mp3" />
     <Media Include="assets\Effects\hit_paddle.wav" />
+    <Media Include="assets\Effects\laser.mp3" />
+    <Media Include="assets\Effects\laugh.mp3" />
+    <Media Include="assets\Effects\lose.mp3" />
     <Media Include="assets\Effects\start_game.wav" />
+    <Media Include="assets\Effects\win.mp3" />
+    <Media Include="assets\Music\music_heaven.mp3" />
+    <Media Include="assets\Music\music_suits_you.mp3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />

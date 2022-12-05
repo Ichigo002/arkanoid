@@ -20,8 +20,9 @@ public:
 	virtual void OnUnload();
 
 protected:
-	FontAsset* font;
-	TextAsset* txt;
+	SDL_Texture* bg;
+	Vector2Int mpos;
+	FontAsset* font_hover;
 };
 
 #endif

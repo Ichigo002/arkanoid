@@ -12,12 +12,12 @@ public:
 
 	virtual ~LevelSceneManager() { ; }
 
-	virtual void update() = 0;
+	virtual void update() { Scene::update(); };
 	virtual void events() { Scene::events(); };
-	virtual void draw() = 0;
+	virtual void draw() { Scene::draw(); };
 
-	virtual void OnLoad() = 0;
-	virtual void OnUnload() = 0;
+	virtual void OnLoad() { Scene::OnLoad(); };
+	virtual void OnUnload() { Scene::OnUnload(); };
 protected:
 
 };
