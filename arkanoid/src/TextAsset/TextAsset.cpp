@@ -55,6 +55,11 @@ void TextAsset::setStartingPos(int x, int y)
 	setStartingPos(Vector2Int(x, y));
 }
 
+void TextAsset::setNewFontAsset(FontAsset* f)
+{
+	asset = f;
+}
+
 void TextAsset::draw()
 {
 	SDL_Rect r;

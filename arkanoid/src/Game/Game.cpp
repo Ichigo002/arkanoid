@@ -66,7 +66,10 @@ void Game::run()
 	while (running)
 	{
 		handleDef();
-		events();
+
+		while(SDL_PollEvent(eve))
+			events();
+
 		update();
 
 		SDL_RenderClear(ren);
@@ -89,7 +92,6 @@ void Game::draw()
 
 void Game::events()
 {
-	SDL_PollEvent(eve);
 
 	if (eve->type == SDL_QUIT || eve->type == SDL_KEYDOWN && eve->key.keysym.sym == SDLK_ESCAPE)
 	{

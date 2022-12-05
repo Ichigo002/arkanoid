@@ -34,6 +34,11 @@ public:
 	void setStartingPos(int x, int y);
 
 	/// <summary>
+	/// Sets new font asset to render
+	/// </summary>
+	void setNewFontAsset(FontAsset* f);
+
+	/// <summary>
 	/// Draw the text
 	/// </summary>
 	void draw();

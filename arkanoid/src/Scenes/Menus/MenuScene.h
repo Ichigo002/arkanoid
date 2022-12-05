@@ -20,9 +20,13 @@ public:
 	virtual void OnUnload();
 
 protected:
+	void changeOption(int _new);
+
+protected:
 	SDL_Texture* bg;
 	Vector2Int mpos;
 	FontAsset* font_hover;
+	int moption; // current menu option
 };
 
 #endif
