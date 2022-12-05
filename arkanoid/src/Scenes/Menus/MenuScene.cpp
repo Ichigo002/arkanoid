@@ -1,4 +1,5 @@
 #include "MenuScene.h"
+#include "../../Game/Running.h"
 
 MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	: Scene(r, ap, k)
@@ -75,7 +76,7 @@ void MenuScene::events()
 			loadScene(1);
 			break;
 		case 2:
-			loadScene(1);
+			exitGame();
 			break;
 		}
 	}

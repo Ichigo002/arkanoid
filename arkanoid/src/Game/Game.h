@@ -11,6 +11,7 @@
 //#include "../SceneManager/SceneChanger.h"
 #include "../Scenes/AllScenes.h"
 #include "../KeyJoy/KeyJoy.h"
+#include "Running.h"
 
 class Game
 {
@@ -32,8 +33,6 @@ private:
 	SDL_Event* eve;
 
 	SceneManager* sman;
-
-	bool running;
 };
 
 #endif

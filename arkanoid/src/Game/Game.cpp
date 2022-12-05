@@ -15,7 +15,7 @@ Game::Game()
 		throwError(__FUNCTION__, "Error init SDL. System error: " + std::to_string(r));
 		return;
 	}
-	running = true;
+	_setrunning(true);
 }
 
 int Game::_init_SDL()
@@ -63,7 +63,7 @@ Game::~Game()
 
 void Game::run()
 {
-	while (running)
+	while (_getrunning())
 	{
 		handleDef();
 
@@ -92,10 +92,9 @@ void Game::draw()
 
 void Game::events()
 {
-
 	if (eve->type == SDL_QUIT || eve->type == SDL_KEYDOWN && eve->key.keysym.sym == SDLK_ESCAPE)
 	{
-		running = false;
+		_setrunning(false);
 	}
 
 	sman->events();
