@@ -10,6 +10,7 @@
 #include "Levels/Lvl3Scene.h"
 
 #include "Menus/MenuScene.h"
+#include "Menus/OptionsScene.h"
 
 
 #endif // !AL_SCENES_H

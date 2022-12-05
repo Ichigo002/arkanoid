@@ -1,7 +1,6 @@
-#include "MenuScene.h"
-#include "../../Game/Running.h"
+#include "OptionsScene.h"
 
-MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
+OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	: Scene(r, ap, k)
 {
 	SDL_Color c = { 255, 255, 255 };
@@ -9,13 +8,13 @@ MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	c = { 244, 32, 32 };
 	font_hover = new FontAsset(r, "assets/Fonts/Pixelmania.ttf", 30, c);
 
-	txts.push_back(new TextAsset(font_def, "PLAY"));
+	txts.push_back(new TextAsset(font_def, "h"));
 	txts[txts.size() - 1]->setStartingPos(250, 500);
 
 	txts.push_back(new TextAsset(font_def, "OPTIONS"));
 	txts[txts.size() - 1]->setStartingPos(183, 572);
 
-	txts.push_back(new TextAsset(font_def, "EXIT"));
+	txts.push_back(new TextAsset(font_def, "BACK"));
 	txts[txts.size() - 1]->setStartingPos(252, 644);
 
 	audio->addSoundEffect("assets/Effects/button_select.mp3");
@@ -25,17 +24,17 @@ MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	changeOption(0);
 }
 
-MenuScene::~MenuScene()
+OptionsScene::~OptionsScene()
 {
 }
 
-void MenuScene::update()
+void OptionsScene::update()
 {
 	Scene::update();
 	//txts[2]->setStartingPos(mpos);
 }
 
-void MenuScene::events()
+void OptionsScene::events()
 {
 	Scene::events();
 	//DEVELOPER
@@ -62,9 +61,9 @@ void MenuScene::events()
 		audio->playSound(0);
 		changeOption(moption - 1);
 	}
-	
+
 	// LOADING
-	if (kj->getAction_Accept()) 
+	if (kj->getAction_Accept())
 	{
 		audio->playSound(1);
 		switch (moption)
@@ -76,30 +75,29 @@ void MenuScene::events()
 			loadScene(1);
 			break;
 		case 2:
-			exitGame();
 			break;
 		}
 	}
 }
 
-void MenuScene::draw()
+void OptionsScene::draw()
 {
 	SDL_RenderCopy(ren, bg, NULL, NULL);
-	
+
 	Scene::draw();
 }
 
-void MenuScene::OnLoad()
+void OptionsScene::OnLoad()
 {
 	Scene::OnLoad();
 }
 
-void MenuScene::OnUnload()
+void OptionsScene::OnUnload()
 {
 	Scene::OnUnload();
 }
 
-void MenuScene::changeOption(int _new)
+void OptionsScene::changeOption(int _new)
 {
 	if (_new < 0)
 		_new = txts.size() - 1;

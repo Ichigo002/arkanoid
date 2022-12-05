@@ -66,6 +66,9 @@
     <ClCompile Include="src\Game\Running.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Scenes\Menus\OptionsScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Running.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scenes\Menus\OptionsScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
