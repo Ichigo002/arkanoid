@@ -58,6 +58,16 @@ public:
 	/// <returns>true if clicked button to go to previous option in menu</returns>
 	bool getAction_Prev();
 
+	// Control: Only_Right X Axis ; D ; RIGHT
+	/// WARNING! If two same this methods are within one call frame then second and evry next method won't work
+	/// <returns>true if clicked button to go to next option in menu</returns>
+	bool getAction_Next_Hor();
+
+	// Control: Only_Left X Axis ; A ; LEFT
+	/// WARNING! If two same this methods are within one call frame then second and evry next method won't work
+	/// <returns>true if clicked button to go to previous option in menu</returns>
+	bool getAction_Prev_Hor();
+
 	// Control: BACK ; ESCAPE
 	/// <returns>true if pause button clicked to stop game</returns>
 	bool getAction_Pause();
@@ -120,6 +130,9 @@ private:
 
 	bool js_action_next; // unclick next action
 	bool js_action_prev; // unclick next action
+
+	bool jsh_action_next; // unclick next action
+	bool jsh_action_prev; // unclick next action
 };
 
 #endif

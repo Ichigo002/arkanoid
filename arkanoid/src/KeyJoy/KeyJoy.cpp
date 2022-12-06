@@ -98,6 +98,32 @@ bool KeyJoy::getAction_Prev()
 	return getPressedKey(SDLK_UP) || getPressedKey(SDLK_w);
 }
 
+bool KeyJoy::getAction_Next_Hor()
+{
+	if (jsh_action_next && getMoveAxisHor() == 0)
+		jsh_action_next = false;
+
+	if (jsconn && !jsh_action_next && getMoveAxisHor() > 0)
+	{
+		jsh_action_next = true;
+		return true;
+	}
+	return getPressedKey(SDLK_RIGHT) || getPressedKey(SDLK_d);
+}
+
+bool KeyJoy::getAction_Prev_Hor()
+{
+	if (jsh_action_prev && getMoveAxisHor() == 0)
+		jsh_action_prev = false;
+
+	if (jsconn && !jsh_action_prev && getMoveAxisHor() < 0)
+	{
+		jsh_action_prev = true;
+		return true;
+	}
+	return getPressedKey(SDLK_LEFT) || getPressedKey(SDLK_a);
+}
+
 bool KeyJoy::getAction_Pause()
 {
 	if (jsconn && getPressedJoystickButton(JoystickButtons::Back))

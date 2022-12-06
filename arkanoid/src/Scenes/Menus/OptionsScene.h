@@ -25,8 +25,13 @@ protected:
 protected:
 	SDL_Texture* bg;
 	Vector2Int mpos;
-	FontAsset* font_hover;
+	FontAsset* font_hover_btn;
+	FontAsset* font_def_btn;
 	int moption; // current menu option
+
+	std::vector<TextAsset*> btns_txt;
+
+	bool active_first; // first page in opitons active
 };
 
 #endif
