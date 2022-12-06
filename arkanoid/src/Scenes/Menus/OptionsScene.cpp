@@ -10,11 +10,35 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	c = { 244, 32, 32 };
 	font_hover_btn = new FontAsset(r, "assets/Fonts/pixel font-7.ttf", 70, c);
 
+	// FIRST PAGE
 
-	//FIRST PAGE
 
-	txts.push_back(new TextAsset(font_def, ""));
-	txts[txts.size() - 1]->setStartingPos(250, 500);
+	//SECOND PAGE
+
+	txts.push_back(new TextAsset(font_def, "In game"));
+	txts[txts.size() - 1]->setStartingPos(559, 258);
+	txts.push_back(new TextAsset(font_def, "you must move"));
+	txts[txts.size() - 1]->setStartingPos(500, 300);
+	txts.push_back(new TextAsset(font_def, "a paddle to bounce"));
+	txts[txts.size() - 1]->setStartingPos(450, 337);
+	txts.push_back(new TextAsset(font_def, "falling ball."));
+	txts[txts.size() - 1]->setStartingPos(423, 373);
+	txts.push_back(new TextAsset(font_def, "Ball hits bricks and destroy its."));
+	txts[txts.size() - 1]->setStartingPos(300, 425);
+	txts.push_back(new TextAsset(font_def, "If you successfully destroy all bricks,"));
+	txts[txts.size() - 1]->setStartingPos(215, 460);
+	txts.push_back(new TextAsset(font_def, "you will obviously pass to next level."));
+	txts[txts.size() - 1]->setStartingPos(196, 491);
+
+	txts.push_back(new TextAsset(font_def, "CONTROLLER ; KEYBOARD => action"));
+	txts[txts.size() - 1]->setStartingPos(8, 533);
+
+	txts.push_back(new TextAsset(font_def, "X axis ; A,D ; LEFT-RIGHT ARROW => moves paddle"));
+	txts[txts.size() - 1]->setStartingPos(8, 560);
+	txts.push_back(new TextAsset(font_def, "Back ; Escape => pause/unpause game"));
+	txts[txts.size() - 1]->setStartingPos(8, 596);
+	txts.push_back(new TextAsset(font_def, "A on gamepad; Enter => clicks button"));
+	txts[txts.size() - 1]->setStartingPos(8, 630);
 
 	//=====================
 
@@ -27,13 +51,11 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	btns_txt.push_back(new TextAsset(font_def_btn, "<-"));
 	btns_txt[btns_txt.size() - 1]->setStartingPos(18, 703);
 
-	audio->addSoundEffect("assets/Effects/button_select.mp3");
-	audio->addSoundEffect("assets/Effects/button_clicked.mp3");
-
 	bg = TextureManager::load(r, "assets/Texture/bg_menu.png");
 
 	active_first = true;
 	changeOption(1);
+	n = 7;
 }
 
 OptionsScene::~OptionsScene()
@@ -43,15 +65,17 @@ OptionsScene::~OptionsScene()
 void OptionsScene::update()
 {
 	Scene::update();
-	//txts[0]->setStartingPos(mpos);
+	//txts[n]->setStartingPos(mpos);
 }
 
 void OptionsScene::events()
 {
 	Scene::events();
 	//DEVELOPER
-	if (kj->getAction_Accept())
+	if (kj->getPressedKey(SDLK_j))
 	{
+		if(n < txts.size()-1)
+			n++;
 		std::cout << "Item pos: " << mpos << std::endl;
 	}
 
@@ -99,7 +123,7 @@ void OptionsScene::draw()
 {
 	SDL_RenderCopy(ren, bg, NULL, NULL);
 
-	if(active_first)
+	if(!active_first)
 		Scene::draw();
 
 	if (active_first)

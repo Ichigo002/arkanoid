@@ -32,6 +32,7 @@ protected:
 	std::vector<TextAsset*> btns_txt;
 
 	bool active_first; // first page in opitons active
+	int n;
 };
 
 #endif
