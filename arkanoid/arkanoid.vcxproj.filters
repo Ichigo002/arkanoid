@@ -69,6 +69,9 @@
     <ClCompile Include="src\Scenes\Menus\OptionsScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UISlider\UISlider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -134,6 +137,9 @@
     <ClInclude Include="src\Scenes\Menus\OptionsScene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\UISlider\UISlider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\Fonts\prstart.ttf" />
@@ -182,6 +188,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\Texture\rockets.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\UISlider\bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\UISlider\handle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\Texture\UISlider\slider.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

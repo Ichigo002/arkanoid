@@ -5,6 +5,7 @@
 #include "../../TextAsset/TextAsset.h"
 #include "../../KeyJoy/KeyJoy.h"
 #include "../../AudioPlayer/AudioPlayer.h"
+#include "../../UISlider/UISlider.h"
 
 class OptionsScene : public Scene
 {
@@ -27,6 +28,7 @@ protected:
 	Vector2Int mpos;
 	FontAsset* font_hover_btn;
 	FontAsset* font_def_btn;
+	UISlider* slider;
 	int moption; // current menu option
 
 	std::vector<TextAsset*> btns_txt;

@@ -12,6 +12,7 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 
 	// FIRST PAGE
 
+	slider = new UISlider(ren, audio, kj);
 
 	//SECOND PAGE
 
@@ -65,12 +66,15 @@ OptionsScene::~OptionsScene()
 void OptionsScene::update()
 {
 	Scene::update();
+	slider->update();
+
 	//txts[n]->setStartingPos(mpos);
 }
 
 void OptionsScene::events()
 {
 	Scene::events();
+	slider->events();
 	//DEVELOPER
 	if (kj->getPressedKey(SDLK_j))
 	{
@@ -126,11 +130,14 @@ void OptionsScene::draw()
 	if(!active_first)
 		Scene::draw();
 
+	slider->draw();
+
 	if (active_first)
 		btns_txt[0]->draw();
 	btns_txt[1]->draw();
 	if (!active_first)
 		btns_txt[2]->draw();
+
 }
 
 void OptionsScene::OnLoad()

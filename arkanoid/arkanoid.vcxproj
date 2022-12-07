@@ -172,6 +172,7 @@
     <ClCompile Include="src\Scenes\Menus\OptionsScene.cpp" />
     <ClCompile Include="src\TextAsset\FontAsset.cpp" />
     <ClCompile Include="src\TextAsset\TextAsset.cpp" />
+    <ClCompile Include="src\UISlider\UISlider.cpp" />
     <ClCompile Include="src\Vector2Int\Vector2Int.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,7 @@
     <ClInclude Include="src\TextAsset\FontAsset.h" />
     <ClInclude Include="src\TextAsset\TextAsset.h" />
     <ClInclude Include="src\TextureManager\TextureManager.h" />
+    <ClInclude Include="src\UISlider\UISlider.h" />
     <ClInclude Include="src\Vector2Int\Vector2Int.h" />
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +219,9 @@
     <Image Include="assets\Texture\paddle_and_ball.png" />
     <Image Include="assets\Texture\rockets.png" />
     <Image Include="assets\Texture\ufo.png" />
+    <Image Include="assets\Texture\UISlider\bg.png" />
+    <Image Include="assets\Texture\UISlider\handle.png" />
+    <Image Include="assets\Texture\UISlider\slider.png" />
     <Image Include="assets\Texture\win.bmp" />
   </ItemGroup>
   <ItemGroup>
