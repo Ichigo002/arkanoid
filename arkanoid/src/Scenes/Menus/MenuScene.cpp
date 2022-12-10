@@ -70,7 +70,7 @@ void MenuScene::events()
 		switch (moption)
 		{
 		case 0:
-			loadScene(0);
+			loadScene(2);
 			break;
 		case 1:
 			loadScene(1);

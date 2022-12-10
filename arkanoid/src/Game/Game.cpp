@@ -50,10 +50,9 @@ int Game::_init_objects()
 
 	sman->addScene<MenuScene>();    // 0
 	sman->addScene<OptionsScene>(); // 1
+	sman->addScene<GameScene>();    // 2
 
-	sman->addScene<Lvl1Scene>();
-
-	sman->loadScene(1); // LAODING DEFUALT SCENE
+	sman->loadScene(0); // LAODING DEFUALT SCENE
 	return 0;
 }
 
