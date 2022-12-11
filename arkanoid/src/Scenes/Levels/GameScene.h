@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include <vector>
 #include "../../SceneManager/Scene.h"
+#include "../../Player/Player.h"
 
 class Level
 {
@@ -37,6 +38,7 @@ protected:
 	Level* current_lvl; // currently loaded level
 	SDL_Rect lvl_bg_dstR;
 	int curr_index_lvl;
+	Player* paddle;
 };
 
 #endif

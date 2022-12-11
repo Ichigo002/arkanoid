@@ -14,9 +14,11 @@ public:
 	~Player();
 
 	/// <summary>
-	/// Starting position where paddle have to be
+	/// Set position
 	/// </summary>
-	void setStartingPos(Vector2Int stpos);
+	void setPos(float stpos);
+
+	void setCenterPos();
 
 	/// <summary>
 	/// Set border where maximaly can player move paddle
@@ -25,15 +27,35 @@ public:
 	/// <param name="right"></param>
 	void setBorders(int left, int right);
 
+	/// <summary>
+	/// Width of paddle
+	/// </summary>
+	/// <param name="lvl">value between 0 - 1</param>
+	void setWidthLevel(float lvl);
 
 
 	void events();
 	void update();
 	void draw();
+
+	float scale;
+	float speed;
 private:
+	SDL_Rect setRect(int x, int y, int w, int h);
+
 	SDL_Renderer* r;
-	AudioPlayer* ap;
+	AudioPlayer* audio;
 	KeyJoy* kj;
+
+	float movement;
+	float xpos;
+	int left_border, right_border;
+	float wsize_lvl;
+
+	SDL_Texture* body;
+
+	SDL_Rect body_dstR;
+	SDL_Rect body_srcR;
 };
 
 #endif

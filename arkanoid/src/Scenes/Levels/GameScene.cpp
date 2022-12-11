@@ -18,11 +18,13 @@ GameScene::~GameScene()
 void GameScene::update()
 {
 	Scene::update();
+	paddle->update();
 }
 
 void GameScene::events()
 {
 	Scene::events();
+	paddle->events();
 }
 
 void GameScene::draw()
@@ -33,11 +35,14 @@ void GameScene::draw()
 		return;
 
 	SDL_RenderCopy(ren, current_lvl->bg, NULL, &lvl_bg_dstR);
+	paddle->draw();
 }
 
 void GameScene::OnLoad()
 {
 	Scene::OnLoad();
+
+	paddle = new Player(ren, audio, kj);
 
 	curr_index_lvl = 0;
 	loadLvl(curr_index_lvl);
