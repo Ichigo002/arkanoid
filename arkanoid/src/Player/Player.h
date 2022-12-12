@@ -17,6 +17,9 @@ public:
 	/// Set position
 	/// </summary>
 	void setPos(float stpos);
+	Vector2Int getPos();
+	int getWidth();
+	int getHeight();
 
 	void setCenterPos();
 

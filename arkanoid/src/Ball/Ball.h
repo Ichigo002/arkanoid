@@ -40,9 +40,12 @@ public:
 private:
 	SDL_Renderer* r;
 	AudioPlayer* audio;
+	int au_index;
 
 	float speed;
 	Vector2Int dir;
+	Vector2Int _ldir; // last dir for playing audio
+	bool can_play_hit;
 	SDL_Rect srcR, dstR;
 	SDL_Texture* tex;
 };

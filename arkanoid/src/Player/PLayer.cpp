@@ -24,6 +24,21 @@ void Player::setPos(float stpos)
 	xpos = stpos;
 }
 
+Vector2Int Player::getPos()
+{
+	return Vector2Int(xpos, body_dstR.y);
+}
+
+int Player::getWidth()
+{
+	return 107 * scale + 400 * scale * wsize_lvl;
+}
+
+int Player::getHeight()
+{
+	return body_dstR.h;
+}
+
 void Player::setCenterPos()
 {
 	xpos = (right_border - left_border) / 2 + left_border - (107 * scale + 400 * scale * wsize_lvl) / 2 + 20; // + 20. static unknown value

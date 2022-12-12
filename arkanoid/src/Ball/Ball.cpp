@@ -5,13 +5,18 @@ Ball::Ball(SDL_Renderer* r, AudioPlayer* ap)
 {
 	tex = TextureManager::load(r, "assets/Texture/paddle_and_ball.png");
 
+	au_index = audio->addMusic("assets/Effects/hit_paddle.mp3");
+
 	srcR.x = 0;
 	srcR.y = 44;
 	srcR.w = 100;
 	srcR.h = 99;
 
-	scale = .5f;
-	speed = 4;
+	scale = .3f;
+	speed = 7;
+
+	setXDir(-1);
+	setYDir(-1);
 }
 
 Ball::~Ball()
@@ -20,6 +25,12 @@ Ball::~Ball()
 
 void Ball::update()
 {
+	if (dir != _ldir)
+	{
+		audio->playMusic(au_index);
+	}
+	_ldir = dir;
+
 	// set pos and scale for rect on the screen
 	dstR.x += speed * dir.x;
 	dstR.y += speed * dir.y;
