@@ -18,6 +18,7 @@ GameScene::~GameScene()
 void GameScene::update()
 {
 	Scene::update();
+	ball->update();
 	paddle->update();
 }
 
@@ -34,8 +35,9 @@ void GameScene::draw()
 	if (!current_lvl)
 		return;
 
-	SDL_RenderCopy(ren, current_lvl->bg, NULL, &lvl_bg_dstR);
+	//SDL_RenderCopy(ren, current_lvl->bg, NULL, &lvl_bg_dstR);
 	paddle->draw();
+	ball->draw();
 }
 
 void GameScene::OnLoad()
@@ -43,6 +45,9 @@ void GameScene::OnLoad()
 	Scene::OnLoad();
 
 	paddle = new Player(ren, audio, kj);
+	ball = new Ball(ren, audio);
+
+	ball->setPos(Vector2Int(300, 300));
 
 	curr_index_lvl = 0;
 	loadLvl(curr_index_lvl);

@@ -5,6 +5,7 @@
 #include <vector>
 #include "../../SceneManager/Scene.h"
 #include "../../Player/Player.h"
+#include "../../Ball/Ball.h"
 
 class Level
 {
@@ -39,6 +40,7 @@ protected:
 	SDL_Rect lvl_bg_dstR;
 	int curr_index_lvl;
 	Player* paddle;
+	Ball* ball;
 };
 
 #endif
