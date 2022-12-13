@@ -50,7 +50,7 @@ int Brick::collides(const SDL_Rect& r)
             if (overlap.x < overlap.y)
             {
                 mtv.x = overlap.x * (r.x < dstR.x ? -1 : 1);
-                if (mtv.y > 0)
+                if (mtv.x > 0)
                     return 1;
                 else
                     return 3;

@@ -36,6 +36,13 @@ protected:
 	void loadLvl(int lvl);
 	void unloadLvl();
 
+	/// <summary>
+	/// type of block between: 0-6
+	/// or -1 if none
+	/// </summary>
+	/// <param name="arr"></param>
+	void loadBricksByArr6x6(int arr[6][6]);
+
 protected:
 	Level* current_lvl; // currently loaded level
 	SDL_Rect lvl_bg_dstR;

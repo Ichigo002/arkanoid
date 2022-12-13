@@ -115,8 +115,6 @@ void GameScene::OnLoad()
 	ball->scale = .4f;
 	ball->setPos(Vector2Int(300, 300));
 
-	bricks.push_back(new Brick(ren, 1, 1, 100, 100, 1));
-
 	curr_index_lvl = 0;
 	loadLvl(curr_index_lvl);
 }
@@ -137,8 +135,19 @@ void GameScene::loadLvl(int lvl)
 	switch (lvl)
 	{
 	case 0:
-		bgno = 3;
-		break;
+	{
+		bgno = 1;
+		int arr[6][6] = {
+			{ 0,  0,  0,  0,  0,  0},
+			{ 1,  1,  1,  1,  1,  1},
+			{ 2,  2,  2,  2,  1,  1},
+			{-1, -1, -1, -1, -1, -1},
+			{-1, -1, -1, -1, -1, -1},
+			{-1, -1, -1, -1, -1, -1},
+		};
+		loadBricksByArr6x6(arr);
+	}
+	break;
 	default:
 		return;
 	}
@@ -151,6 +160,22 @@ void GameScene::loadLvl(int lvl)
 void GameScene::unloadLvl()
 {
 	current_lvl = nullptr;
+}
+
+void GameScene::loadBricksByArr6x6(int arr[6][6])
+{
+	int stx = 36;
+	int sty = 130; 
+
+	// map 6x6
+	for (int y = 0; y < 6; y++)
+	{
+		for (int x = 0; x < 6; x++)
+		{
+			if(arr[y][x] != -1)
+				bricks.push_back(new Brick(ren, 1, 1, stx + x * 100, sty + y * 50, arr[y][x]));
+		}
+	}
 }
 
 Level::~Level()
