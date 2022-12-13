@@ -157,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="src\AudioPlayer\AudioPlayer.cpp" />
     <ClCompile Include="src\Ball\Ball.cpp" />
+    <ClCompile Include="src\Brick\Brick.cpp" />
     <ClCompile Include="src\ErrorHandler\ErrorHandler.cpp" />
     <ClCompile Include="src\Game\Game.cpp" />
     <ClCompile Include="src\Game\Running.cpp" />
@@ -178,6 +179,7 @@
   <ItemGroup>
     <ClInclude Include="src\AudioPlayer\AudioPlayer.h" />
     <ClInclude Include="src\Ball\Ball.h" />
+    <ClInclude Include="src\Brick\Brick.h" />
     <ClInclude Include="src\ErrorHandler\ErrorHandler.h" />
     <ClInclude Include="src\Game\Game.h" />
     <ClInclude Include="src\Game\Running.h" />
@@ -228,6 +230,7 @@
     <Media Include="assets\Effects\button_select.mp3" />
     <Media Include="assets\Effects\creepy.mp3" />
     <Media Include="assets\Effects\eeye.mp3" />
+    <Media Include="assets\Effects\hit_brick.mp3" />
     <Media Include="assets\Effects\hit_paddle.mp3" />
     <Media Include="assets\Effects\hit_paddle.wav" />
     <Media Include="assets\Effects\laser.mp3" />

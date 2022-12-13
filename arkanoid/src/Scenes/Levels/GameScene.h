@@ -6,6 +6,7 @@
 #include "../../SceneManager/Scene.h"
 #include "../../Player/Player.h"
 #include "../../Ball/Ball.h"
+#include "../../Brick/Brick.h"
 
 class Level
 {
@@ -39,8 +40,11 @@ protected:
 	Level* current_lvl; // currently loaded level
 	SDL_Rect lvl_bg_dstR;
 	int curr_index_lvl;
+	int audio_hit_index;
+	int audio_hit_brick_index;
 	Player* paddle;
 	Ball* ball;
+	std::vector<Brick*> bricks;
 };
 
 #endif

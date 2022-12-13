@@ -1,11 +1,9 @@
 #include "Ball.h"
 
-Ball::Ball(SDL_Renderer* r, AudioPlayer* ap)
-	: r(r), audio(ap)
+Ball::Ball(SDL_Renderer* r)
+	: r(r)
 {
 	tex = TextureManager::load(r, "assets/Texture/paddle_and_ball.png");
-
-	au_index = audio->addMusic("assets/Effects/hit_paddle.mp3");
 
 	srcR.x = 0;
 	srcR.y = 44;
@@ -25,12 +23,6 @@ Ball::~Ball()
 
 void Ball::update()
 {
-	if (dir != _ldir)
-	{
-		audio->playMusic(au_index);
-	}
-	_ldir = dir;
-
 	// set pos and scale for rect on the screen
 	dstR.x += speed * dir.x;
 	dstR.y += speed * dir.y;
@@ -62,6 +54,11 @@ void Ball::setXDir(int d)
 void Ball::setYDir(int d)
 {
 	dir.y = d;
+}
+
+SDL_Rect Ball::getRect()
+{
+	return dstR;
 }
 
 int Ball::getLeftBound()

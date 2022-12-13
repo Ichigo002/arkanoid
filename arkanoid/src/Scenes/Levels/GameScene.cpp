@@ -3,6 +3,9 @@
 GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	: Scene(r, ap, k)
 {
+	audio_hit_index = audio->addSoundEffect("assets/Effects/hit_paddle.mp3");
+	audio_hit_brick_index = audio->addSoundEffect("assets/Effects/hit_brick.mp3");
+	
 	// size: 675x720 + 0x10
 	// pos: 0x50
 	lvl_bg_dstR.x = 0;
@@ -19,20 +22,50 @@ void GameScene::update()
 {
 	Scene::update();
 
+	int r;
+	//bricks collision
+	for (Brick* b : bricks)
+	{
+		r = b->collides(ball->getRect());
+		if (r != 0)
+		{
+			if (r == 1) // right
+				ball->setXDir(1);
+			if (r == 2) // bottom
+				ball->setYDir(1);
+			if (r == 3) // left
+				ball->setXDir(-1);
+			if (r == 4) // top
+				ball->setYDir(-1);
+		}
+	}
+
 	// map borders
 	if (ball->getLeftBound() < 22)
-		ball->setXDir(1);
+	{
+		ball->setXDir(1); 
+		audio->playSound(audio_hit_brick_index);
+	}
 	if (ball->getRightBound() > 653)
-		ball->setXDir(-1);
+	{
+		ball->setXDir(-1); 
+		audio->playSound(audio_hit_brick_index);
+	}
 	if (ball->getTopBound() < 77) // 0x60px + 0x22px - 0x05
-		ball->setYDir(1);
+	{
+		ball->setYDir(1); 
+		audio->playSound(audio_hit_brick_index);
+	}
 
 	// paddle interaction
 	if (ball->getBottomBound() > paddle->getPos().y - 10 &&
 		ball->getLeftBound() > paddle->getPos().x - 4 &&
 		ball->getRightBound() < paddle->getPos().x + paddle->getWidth() + 4 &&
 		ball->getTopBound() < paddle->getPos().y + paddle->getHeight())
+	{
 		ball->setYDir(-1);
+		audio->playSound(audio_hit_index);
+	}
 
 	// lose 1 live
 	if (ball->getBottomBound() > paddle->getPos().y + 200)
@@ -58,6 +91,11 @@ void GameScene::draw()
 	SDL_RenderCopy(ren, current_lvl->bg, NULL, &lvl_bg_dstR);
 	paddle->draw();
 	ball->draw();
+
+	for (Brick* b : bricks)
+	{
+		b->draw();
+	}
 }
 
 void GameScene::OnLoad()
@@ -71,11 +109,13 @@ void GameScene::OnLoad()
 	paddle->speed = 28; 
 	paddle->setWidthLevel(.6f);
 
-	ball = new Ball(ren, audio);
+	ball = new Ball(ren);
 
 	ball->setSpeed(10);
 	ball->scale = .4f;
 	ball->setPos(Vector2Int(300, 300));
+
+	bricks.push_back(new Brick(ren, 1, 1, 100, 100, 1));
 
 	curr_index_lvl = 0;
 	loadLvl(curr_index_lvl);

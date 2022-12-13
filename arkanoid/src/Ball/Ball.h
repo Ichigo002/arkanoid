@@ -10,7 +10,7 @@
 class Ball
 {
 public:
-	Ball(SDL_Renderer* r, AudioPlayer* ap);
+	Ball(SDL_Renderer* r);
 	~Ball();
 
 	void update();
@@ -31,6 +31,8 @@ public:
 	/// <param name="d">available values axis: -1; 1</param>
 	void setYDir(int d);
 
+	SDL_Rect getRect();
+
 	int getLeftBound();
 	int getRightBound();
 	int getTopBound();
@@ -39,13 +41,10 @@ public:
 	float scale;
 private:
 	SDL_Renderer* r;
-	AudioPlayer* audio;
 	int au_index;
 
 	float speed;
 	Vector2Int dir;
-	Vector2Int _ldir; // last dir for playing audio
-	bool can_play_hit;
 	SDL_Rect srcR, dstR;
 	SDL_Texture* tex;
 };

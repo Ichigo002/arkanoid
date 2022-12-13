@@ -72,6 +72,9 @@
     <ClCompile Include="src\Ball\Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Brick\Brick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Game.h">
@@ -135,6 +138,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Ball\Ball.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brick\Brick.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -215,6 +221,7 @@
     <Media Include="assets\Effects\win.mp3" />
     <Media Include="assets\Music\music_heaven.mp3" />
     <Media Include="assets\Music\music_suits_you.mp3" />
+    <Media Include="assets\Effects\hit_brick.mp3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2_ttf.dll" />
