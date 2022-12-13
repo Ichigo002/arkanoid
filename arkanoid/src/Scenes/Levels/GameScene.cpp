@@ -22,11 +22,10 @@ void GameScene::update()
 {
 	Scene::update();
 
-	int r;
 	//bricks collision
-	for (Brick* b : bricks)
+	for (int i = 0, r; i < bricks.size(); i++)
 	{
-		r = b->collides(ball->getRect());
+		r = bricks[i]->collides(ball->getRect());
 		if (r != 0)
 		{
 			if (r == 1) // right
@@ -37,6 +36,9 @@ void GameScene::update()
 				ball->setXDir(-1);
 			if (r == 4) // top
 				ball->setYDir(-1);
+
+			bricks.erase(bricks.begin() + i);
+			audio->playSound(audio_hit_brick_index);
 		}
 	}
 
@@ -44,17 +46,17 @@ void GameScene::update()
 	if (ball->getLeftBound() < 22)
 	{
 		ball->setXDir(1); 
-		audio->playSound(audio_hit_brick_index);
+		//audio->playSound(audio_hit_brick_index);
 	}
 	if (ball->getRightBound() > 653)
 	{
 		ball->setXDir(-1); 
-		audio->playSound(audio_hit_brick_index);
+		//audio->playSound(audio_hit_brick_index);
 	}
 	if (ball->getTopBound() < 77) // 0x60px + 0x22px - 0x05
 	{
 		ball->setYDir(1); 
-		audio->playSound(audio_hit_brick_index);
+		//audio->playSound(audio_hit_brick_index);
 	}
 
 	// paddle interaction
