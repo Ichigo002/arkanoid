@@ -1,7 +1,7 @@
 #include "Brick.h"
 
 Brick::Brick(SDL_Renderer* r, float wsc, float hsc, int xpos, int ypos, int type)
-	: r(r)
+	: r(r), type(type)
 {
 	// single brick: 100x50
 	srcR = { 0, 0, 100, 50 };
@@ -71,4 +71,9 @@ int Brick::collides(const SDL_Rect& r)
 void Brick::draw()
 {
 	SDL_RenderCopy(r, tex, &srcR, &dstR);
+}
+
+int Brick::getType()
+{
+    return type;
 }

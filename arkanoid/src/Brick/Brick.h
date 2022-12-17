@@ -32,10 +32,13 @@ public:
 
 	void draw();
 
+	int getType();
+
 protected:
 	SDL_Renderer* r;
 	SDL_Texture* tex;
 	SDL_Rect srcR, dstR;
+	int type;
 };
 
 #endif

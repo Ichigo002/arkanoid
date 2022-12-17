@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include "../../TextAsset/TextAsset.h"
 #include "../../SceneManager/Scene.h"
 #include "../../Player/Player.h"
 #include "../../Ball/Ball.h"
@@ -43,15 +44,29 @@ protected:
 	/// <param name="arr"></param>
 	void loadBricksByArr6x6(int arr[6][6]);
 
+	void updateBricks();
+	void updatePaddle();
+	void updateMapBorders();
+	void updateLogic();
+	void updateCounters();
+
 protected:
 	Level* current_lvl; // currently loaded level
 	SDL_Rect lvl_bg_dstR;
+
 	int curr_index_lvl;
 	int audio_hit_index;
 	int audio_hit_brick_index;
 	Player* paddle;
 	Ball* ball;
 	std::vector<Brick*> bricks;
+
+	int hit_points;
+	int combo_counter;
+
+	int lives;
+	int points;
+	Vector2Int mpos;
 };
 
 #endif

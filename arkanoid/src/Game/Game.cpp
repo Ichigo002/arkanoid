@@ -52,7 +52,7 @@ int Game::_init_objects()
 	sman->addScene<OptionsScene>(); // 1
 	sman->addScene<GameScene>();    // 2
 
-	sman->loadScene(2); // LAODING DEFUALT SCENE
+	sman->loadScene(0); // LAODING DEFUALT SCENE
 	return 0;
 }
 
