@@ -30,7 +30,7 @@ void GameScene::update()
 	updatePaddle();
 	updateLogic();
 	updateCounters();
-
+	 
 	ball->update();
 }
 
