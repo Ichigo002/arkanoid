@@ -19,17 +19,20 @@ public:
 	void setPos(Vector2Int p);
 	void setSpeed(float v);
 
-	/// <summary>
-	/// set Direction of falling ball
-	/// </summary>
-	/// <param name="d">available values axis: -1; 1</param>
-	void setXDir(int d);
+	float getXDir();
+	float getYDir();
 
 	/// <summary>
 	/// set Direction of falling ball
 	/// </summary>
-	/// <param name="d">available values axis: -1; 1</param>
-	void setYDir(int d);
+	/// <param name="d">available values axis: (-1;1)</param>
+	void setXDir(float d);
+
+	/// <summary>
+	/// set Direction of falling ball
+	/// </summary>
+	/// <param name="d">available values axis: (-1;1)</param>
+	void setYDir(float d);
 
 	SDL_Rect getRect();
 
@@ -44,7 +47,7 @@ private:
 	int au_index;
 
 	float speed;
-	Vector2Int dir;
+	float dirx, diry;
 	SDL_Rect srcR, dstR;
 	SDL_Texture* tex;
 };

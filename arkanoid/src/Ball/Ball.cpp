@@ -24,8 +24,8 @@ Ball::~Ball()
 void Ball::update()
 {
 	// set pos and scale for rect on the screen
-	dstR.x += speed * dir.x;
-	dstR.y += speed * dir.y;
+	dstR.x += speed * dirx;
+	dstR.y += speed * diry;
 	dstR.w = srcR.w * scale;
 	dstR.h = srcR.h * scale;
 }
@@ -46,14 +46,24 @@ void Ball::setSpeed(float v)
 	speed = v;
 }
 
-void Ball::setXDir(int d)
+float Ball::getXDir()
 {
-	dir.x = d;
+	return dirx;
 }
 
-void Ball::setYDir(int d)
+float Ball::getYDir()
 {
-	dir.y = d;
+	return diry;
+}
+
+void Ball::setXDir(float d)
+{
+	dirx = d;
+}
+
+void Ball::setYDir(float d)
+{
+	diry = d;
 }
 
 SDL_Rect Ball::getRect()

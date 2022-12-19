@@ -5,7 +5,7 @@ Player::Player(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* kj)
 {
 	body = TextureManager::load(r, "assets/Texture/paddle_and_ball.png");
 
-	body_dstR.y = 650;
+	body_dstR.y = 740;
 
 	scale = .5f;
 	speed = 11;

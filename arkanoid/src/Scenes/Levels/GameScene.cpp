@@ -3,6 +3,8 @@
 GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	: Scene(r, ap, k)
 {
+	
+
 	audio_hit_index = audio->addSoundEffect("assets/Effects/hit_paddle.mp3");
 	audio_hit_brick_index = audio->addSoundEffect("assets/Effects/hit_brick.mp3");
 	
@@ -43,13 +45,13 @@ void GameScene::updateBricks()
 		if (r != 0)
 		{
 			if (r == 1) // right
-				ball->setXDir(1);
+				ball->setXDir(-ball->getXDir());
 			if (r == 2) // bottom
-				ball->setYDir(1);
+				ball->setYDir(-ball->getYDir());
 			if (r == 3) // left
-				ball->setXDir(-1);
+				ball->setXDir(-ball->getXDir());
 			if (r == 4) // top
-				ball->setYDir(-1);
+				ball->setYDir(-ball->getYDir());
 
 			combo_counter++;
 
@@ -108,7 +110,15 @@ void GameScene::updateLogic()
 	if (ball->getBottomBound() > paddle->getPos().y + 200)
 	{
 		lives--;
-		ball->setPos(Vector2Int(300, 300));
+		ball->setPos(Vector2Int(300, 460));
+		float v;
+		do
+		{
+			v = ((rand() % 201) - 100.0f) / 100.0f;
+		} while (v < .17f && v > -.17f);
+
+		ball->setXDir(v);
+		
 		if (lives == 0)
 		{
 			//you loser
@@ -178,17 +188,7 @@ void GameScene::OnLoad()
 	Scene::OnLoad();
 
 	paddle = new Player(ren, audio, kj);
-
-	paddle->scale = .4f;
-	paddle->setCenterPos();
-	paddle->speed = 28; 
-	paddle->setWidthLevel(.6f);
-
 	ball = new Ball(ren);
-
-	ball->setSpeed(10);
-	ball->scale = .4f;
-	ball->setPos(Vector2Int(300, 300));
 
 	int txi = 0;
 
@@ -221,26 +221,51 @@ void GameScene::loadLvl(int lvl)
 	int bgno = 0; // Bg to load for lvl
 
 	ball->scale = .4f;
-	ball->setPos(Vector2Int(300, 300));
+	ball->setPos(Vector2Int(300, 460));
+	ball->setYDir(1);
+	float v;
+	do
+	{
+		v = ((rand() % 201) - 100.0f) / 100.0f;
+	} while (v < .17f && v > -.17f);
+
+	ball->setXDir(v);
 	hit_points = 100;
 	combo_counter = 0;
 
 	paddle->setCenterPos();
 	paddle->scale = .4f;
+	paddle->speed = 28;
 
 	// Every case is single level
 	switch (lvl)
 	{
 	case 0:
 	{
+		hit_points = 70;
+		paddle->setWidthLevel(1);
+		ball->setSpeed(8);
+
+		bgno = 2; // background
+		int arr[6][6] = {
+			{ 0,  0,  0,  0,  0,  0},
+			{ 0,  0,  0,  0,  0,  0},
+			{ 0,  0,  0,  0,  0,  0},
+			{ 0,  0,  0,  0,  0,  0},
+			{ 0,  0,  0,  0,  0,  0},
+			{ 0,  0,  0,  0,  0,  0},
+		};
+		loadBricksByArr6x6(arr);
+	}
+	break;
+
+	case 1:
+	{
 		hit_points = 100;
-
-		paddle->speed = 28;
 		paddle->setWidthLevel(.6f);
+		ball->setSpeed(8);
 
-		ball->setSpeed(10);
-
-		bgno = 0;
+		bgno = 0; // background
 		int arr[6][6] = {
 			{ 0,  0,  0,  0,  0,  0},
 			{ 1,  1,  1,  1,  1,  1},
@@ -253,30 +278,11 @@ void GameScene::loadLvl(int lvl)
 	}
 	break;
 
-	case 1:
-	{
-		paddle->speed = 28;
-		paddle->setWidthLevel(.45f);
-
-		ball->setSpeed(8.5f);
-
-		bgno = 1;
-		int arr[6][6] = {
-			{ 4,  0,  0,  0,  4,  0},
-			{ 1,  1,  4,  1,  1,  1},
-			{ 2,  2,  2,  4,  1,  1},
-			{-1, -1,  4,  4,  4, -1},
-			{ 5, -1, -1, -1, -1, -1},
-			{-1, -1, -1, -1, -1, -1},
-		};
-		loadBricksByArr6x6(arr);
-	}
-	break;
-
 	default: // Win scene loading later
 		loadScene(1);
 		return;
 	}
+
 
 	l->bg = TextureManager::load(ren, "assets/Texture/levels_bg/bg-" + std::to_string(bgno) + ".png");
 

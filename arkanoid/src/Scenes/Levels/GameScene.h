@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <vector>
+#include <cstdlib>
 #include "../../TextAsset/TextAsset.h"
 #include "../../SceneManager/Scene.h"
 #include "../../Player/Player.h"
