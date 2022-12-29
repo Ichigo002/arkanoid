@@ -51,6 +51,7 @@ int Game::_init_objects()
 	sman->addScene<MenuScene>();    // 0
 	sman->addScene<OptionsScene>(); // 1
 	sman->addScene<GameScene>();    // 2
+	sman->addScene<LoseScene>();    // 3
 
 	sman->loadScene(0); // LAODING DEFUALT SCENE
 	return 0;

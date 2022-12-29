@@ -3,8 +3,6 @@
 GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	: Scene(r, ap, k)
 {
-	
-
 	audio_hit_index = audio->addSoundEffect("assets/Effects/hit_paddle.mp3");
 	audio_hit_brick_index = audio->addSoundEffect("assets/Effects/hit_brick.mp3");
 	
@@ -122,7 +120,7 @@ void GameScene::updateLogic()
 		if (lives == 0)
 		{
 			//you loser
-			loadScene(0);
+			loadScene(3);
 		}
 	}
 	// win this lvl
