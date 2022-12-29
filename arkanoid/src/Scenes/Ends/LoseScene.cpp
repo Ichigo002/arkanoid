@@ -10,18 +10,15 @@ LoseScene::LoseScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	font_hover = new FontAsset(r, "assets/Fonts/Pixelmania.ttf", 30, c);
 
 	txts.push_back(new TextAsset(font_def, "RESTART"));
-	txts[txts.size() - 1]->setStartingPos(250, 500);
+	txts[txts.size() - 1]->setStartingPos(178, 640);
 
 	txts.push_back(new TextAsset(font_def, "BACK MENU"));
-	txts[txts.size() - 1]->setStartingPos(183, 572);
-
-	txts.push_back(new TextAsset(font_def, "NONE"));
-	txts[txts.size() - 1]->setStartingPos(252, 644);
+	txts[txts.size() - 1]->setStartingPos(140, 714);
 
 	audio->addSoundEffect("assets/Effects/button_select.mp3");
 	audio->addSoundEffect("assets/Effects/button_clicked.mp3");
 
-	bg = TextureManager::load(r, "assets/Texture/bg_menu.png");
+	bg = TextureManager::load(r, "assets/Texture/bg_game_over.bmp");
 	changeOption(0);
 }
 
@@ -32,7 +29,7 @@ LoseScene::~LoseScene()
 void LoseScene::update()
 {
 	Scene::update();
-	//txts[2]->setStartingPos(mpos);
+	//txts[0]->setStartingPos(mpos);
 }
 
 void LoseScene::events()
@@ -73,10 +70,7 @@ void LoseScene::events()
 			loadScene(2);
 			break;
 		case 1:
-			loadScene(1);
-			break;
-		case 2:
-			exitGame();
+			loadScene(0);
 			break;
 		}
 	}
