@@ -10,11 +10,12 @@ UISlider::UISlider(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 
 	SDL_QueryTexture(slider, NULL, NULL, &slider_dstR.w, &slider_dstR.h);
 	SDL_QueryTexture(handle, NULL, NULL, &handle_dstR.w, &handle_dstR.h);
+	SDL_QueryTexture(handle_hover, NULL, NULL, &handle_dstR.w, &handle_dstR.h);
 
+	// Default values obviously
 	setPos(Vector2Int(100, 100));
 	setSize(Vector2Int(300, 100));
 
-	value = 0;
 }
 
 UISlider::~UISlider()
@@ -27,9 +28,9 @@ void UISlider::draw()
 	SDL_RenderCopy(ren, slider, NULL, &slider_dstR);
 
 	if(is_hover)
-		SDL_RenderCopy(ren, handle, NULL, &handle_dstR);
-	else
 		SDL_RenderCopy(ren, handle_hover, NULL, &handle_dstR);
+	else
+		SDL_RenderCopy(ren, handle, NULL, &handle_dstR);
 
 }
 
@@ -37,6 +38,7 @@ void UISlider::events()
 {
 	if (!is_hover)
 		return;
+
 }
 
 void UISlider::update()
@@ -67,6 +69,31 @@ void UISlider::focus()
 void UISlider::unfocus()
 {
 	is_hover = false;
+}
+
+void UISlider::increaseValue()
+{
+	value += prec;
+	if (value > 1)
+		value = 1;
+}
+
+void UISlider::decreaseValue()
+{
+	value -= prec;
+	if (value < 0)
+		value = 0;
+}
+
+void UISlider::setPrecision(float p)
+{
+	if(p > 0 && p <= 1.0f)
+		prec = p;
+}
+
+float UISlider::getValue()
+{
+	return value;
 }
 
 void UISlider::setPos(Vector2Int p)

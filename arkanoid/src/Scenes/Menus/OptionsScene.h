@@ -21,7 +21,8 @@ public:
 	virtual void OnUnload();
 
 protected:
-	void changeOption(int _new);
+	void changeOptionHor(int _new);
+	void changeOptionVer(int _new);
 
 protected:
 	SDL_Texture* bg;
@@ -30,10 +31,13 @@ protected:
 	FontAsset* font_def_btn;
 	UISlider* slider;
 	int moption; // current menu option
+	int hoption; // current sldier option
 
 	std::vector<TextAsset*> btns_txt;
+	std::vector<UISlider*> option_sliders;
 
 	bool active_first; // first page in opitons active
+	bool active_nav_btns = false; // true if now controls back and arrows
 	int n;
 };
 

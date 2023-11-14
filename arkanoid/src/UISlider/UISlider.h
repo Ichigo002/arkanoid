@@ -20,7 +20,11 @@ public:
 	void focus();
 	void unfocus();
 
-	float value; // value between 0.0f - 1.0f
+	
+	void increaseValue();
+	void decreaseValue();
+	void setPrecision(float p);
+	float getValue();
 
 	void setPos(Vector2Int p);
 	// render size in pixels x = width, y = height
@@ -47,6 +51,8 @@ protected:
 	SDL_Rect handle_dstR;
 
 	bool is_hover;
+	float value = 0; // value between 0.0f - 1.0f
+	float prec = .1f; // precision. how many should change value after increase or decrease operation 
 };
 
 #endif

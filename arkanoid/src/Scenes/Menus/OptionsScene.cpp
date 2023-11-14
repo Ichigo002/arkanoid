@@ -12,7 +12,13 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 
 	// FIRST PAGE
 
-	slider = new UISlider(ren, audio, kj);
+	option_sliders.push_back(new UISlider( r, ap, k));
+	option_sliders[0]->setPos(Vector2Int(100, 100));
+	option_sliders.push_back(new UISlider( r, ap, k));
+	option_sliders[1]->setPos(Vector2Int(100, 300));
+	option_sliders.push_back(new UISlider( r, ap, k));
+	option_sliders[2]->setPos(Vector2Int(100, 500));
+
 
 	//SECOND PAGE
 
@@ -55,7 +61,7 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	bg = TextureManager::load(r, "assets/Texture/bg_menu.png");
 
 	active_first = true;
-	changeOption(1);
+	changeOptionHor(1);
 	n = 7;
 }
 
@@ -66,7 +72,10 @@ OptionsScene::~OptionsScene()
 void OptionsScene::update()
 {
 	Scene::update();
-	slider->update();
+	for (UISlider* s : option_sliders)
+	{
+		s->update();
+	}
 
 	//txts[n]->setStartingPos(mpos);
 }
@@ -74,13 +83,19 @@ void OptionsScene::update()
 void OptionsScene::events()
 {
 	Scene::events();
-	slider->events();
+	for (UISlider* s : option_sliders)
+	{
+		s->events();
+	}
+
 	//DEVELOPER
 	if (kj->getPressedKey(SDLK_j))
 	{
 		if(n < txts.size()-1)
 			n++;
 		std::cout << "Item pos: " << mpos << std::endl;
+
+		std::cout << "Option sldiers size: " << option_sliders.size() << std::endl;
 	}
 
 	if (kj->getEventData()->type == SDL_MOUSEMOTION)
@@ -92,32 +107,58 @@ void OptionsScene::events()
 
 	if (kj->getAction_Prev_Hor())
 	{
-		audio->playSound(0);
-		changeOption(moption + 1);
+		if (!active_nav_btns)
+		{
+			option_sliders[hoption]->decreaseValue();
+		}
+		else
+		{
+			audio->playSound(0);
+			changeOptionHor(moption + 1);
+		}
 	}
 
 	if (kj->getAction_Next_Hor())
 	{
-		audio->playSound(0);
-		changeOption(moption - 1);
+		if (!active_nav_btns)
+		{
+			option_sliders[hoption]->increaseValue();
+		}
+		else
+		{
+			audio->playSound(0);
+			changeOptionHor(moption - 1);
+		}
 	}
 
+	//-------
+
+	if (kj->getAction_Next())
+	{
+		audio->playSound(0);
+		changeOptionVer(hoption + 1);
+	}
+	if (kj->getAction_Prev())
+	{
+		audio->playSound(0);
+		changeOptionVer(hoption - 1);
+	}
 	// LOADING
-	if (kj->getAction_Accept())
+	if (kj->getAction_Accept() && active_nav_btns)
 	{
 		audio->playSound(1);
 		switch (moption)
 		{
 		case 0:
 			active_first = false;
-			changeOption(2);
+			changeOptionHor(2);
 			break;
 		case 1:
 			loadScene(0);
 			break;
 		case 2:
 			active_first = true;
-			changeOption(0);
+			changeOptionHor(0);
 			break;
 		}
 	}
@@ -127,17 +168,22 @@ void OptionsScene::draw()
 {
 	SDL_RenderCopy(ren, bg, NULL, NULL);
 
-	if(!active_first)
-		Scene::draw();
-
-	slider->draw();
+	btns_txt[1]->draw(); // buttton: "BACK"
 
 	if (active_first)
-		btns_txt[0]->draw();
-	btns_txt[1]->draw();
-	if (!active_first)
-		btns_txt[2]->draw();
+	{
+		for (UISlider* s : option_sliders)
+		{
+			s->draw();
+		}
 
+		btns_txt[0]->draw(); // right arrow btn
+	}
+	else 
+	{
+		Scene::draw();
+		btns_txt[2]->draw(); // left arrow btn
+	}
 }
 
 void OptionsScene::OnLoad()
@@ -150,7 +196,7 @@ void OptionsScene::OnUnload()
 	Scene::OnUnload();
 }
 
-void OptionsScene::changeOption(int _new)
+void OptionsScene::changeOptionHor(int _new)
 {
 	if (_new < (active_first ? 0 : 1))
 		_new = btns_txt.size() - (active_first ? 2 : 1);
@@ -161,4 +207,30 @@ void OptionsScene::changeOption(int _new)
 	btns_txt[_new]->setNewFontAsset(font_hover_btn);
 
 	moption = _new;
+}
+
+void OptionsScene::changeOptionVer(int _new)
+{
+	if (!active_first)
+		return;
+
+	int size = option_sliders.size() - 1;
+
+	if (_new < 0)
+	{
+		_new = size;
+		active_nav_btns = !active_nav_btns;
+	}
+
+	if (_new > size)
+	{
+		active_nav_btns = !active_nav_btns;
+		_new = 0;
+	}
+
+	option_sliders[hoption]->unfocus();
+	if(!active_nav_btns)
+		option_sliders[_new]->focus();
+
+	hoption = _new;
 }
