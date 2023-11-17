@@ -28,7 +28,7 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	option_sliders.push_back(new UISlider( r, ap, k));
 	option_sliders[1]->setPos(Vector2Int(325, 592));
 	option_sliders[1]->setSize(Vector2Int(150, 50));
-	option_sliders[1]->setValue(.5f);
+	option_sliders[1]->setValue(audio->__control_sensitivity_option__);
 
 	opt_txt.push_back(new TextAsset(font_def, " control sensitivity: "));
 	opt_txt[1]->setStartingPos(83, 607);
@@ -260,10 +260,10 @@ void OptionsScene::updateCurrentSlider()
 	switch (hoption)
 	{
 	case 0:
-		 audio->setVolume(option_sliders[hoption]->getValue());
-		 break;
+		audio->setVolume(option_sliders[hoption]->getValue());
+		break;
 	case 1:
-		//set control sensitivity
+		audio->__control_sensitivity_option__ = option_sliders[hoption]->getValue();
 		break;
 	default:
 		break;

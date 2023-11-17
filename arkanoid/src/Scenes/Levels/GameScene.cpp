@@ -15,6 +15,7 @@ GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	lvl_bg_dstR.y = 50;
 	lvl_bg_dstR.w = 675;
 	lvl_bg_dstR.h = 730;
+
 }
 
 GameScene::~GameScene()
@@ -188,6 +189,9 @@ void GameScene::OnLoad()
 	paddle = new Player(ren, audio, kj);
 	ball = new Ball(ren);
 
+
+	paddle->speed = audio->__control_sensitivity_option__ * 28 * 2;
+
 	int txi = 0;
 
 	txts.push_back(new TextAsset(font_def));
@@ -233,7 +237,7 @@ void GameScene::loadLvl(int lvl)
 
 	paddle->setCenterPos();
 	paddle->scale = .4f;
-	paddle->speed = 28;
+
 
 	// Every case is single level
 	switch (lvl)

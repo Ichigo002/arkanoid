@@ -45,6 +45,8 @@ public:
 	bool isPlayingMusic();
 	bool isPausedMusic();
 
+	// I know it's bad practice but you know, it's the easiest way to do it :)
+	float __control_sensitivity_option__ = 0.5f;
 private:
 
 	std::vector<Mix_Chunk*> vsound;
