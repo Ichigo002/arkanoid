@@ -8,6 +8,8 @@ AudioPlayer::AudioPlayer()
 	{
 		throwError(__FUNCTION__, "Init mix open audio");
 	}
+
+	setVolume(.5f);
 }
 
 AudioPlayer::~AudioPlayer()
@@ -24,7 +26,7 @@ AudioPlayer::~AudioPlayer()
 		c = nullptr;
 	}
 }
-// TODO 2 It doesn't work!!!
+
 void AudioPlayer::setVolume(float vol)
 {
 	if (vol >= 0 && vol <= 1)

@@ -24,6 +24,8 @@ protected:
 	void changeOptionHor(int _new);
 	void changeOptionVer(int _new);
 
+	void updateCurrentSlider();
+
 protected:
 	SDL_Texture* bg;
 	Vector2Int mpos;
@@ -34,6 +36,7 @@ protected:
 	int hoption; // current sldier option
 
 	std::vector<TextAsset*> btns_txt;
+	std::vector<TextAsset*> opt_txt;
 	std::vector<UISlider*> option_sliders;
 
 	bool active_first; // first page in opitons active

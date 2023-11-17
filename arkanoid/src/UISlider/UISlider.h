@@ -19,12 +19,12 @@ public:
 
 	void focus();
 	void unfocus();
-
 	
 	void increaseValue();
 	void decreaseValue();
 	void setPrecision(float p);
 	float getValue();
+	void setValue(float v);
 
 	void setPos(Vector2Int p);
 	// render size in pixels x = width, y = height

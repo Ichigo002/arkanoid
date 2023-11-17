@@ -11,15 +11,27 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	font_hover_btn = new FontAsset(r, "assets/Fonts/pixel font-7.ttf", 70, c);
 
 	// FIRST PAGE
+	
+	/*
+	0 -> volume
+	1 -> control sensitivity
+	*/
 
 	option_sliders.push_back(new UISlider( r, ap, k));
-	option_sliders[0]->setPos(Vector2Int(100, 100));
-	option_sliders.push_back(new UISlider( r, ap, k));
-	option_sliders[1]->setPos(Vector2Int(100, 300));
-	option_sliders.push_back(new UISlider( r, ap, k));
-	option_sliders[2]->setPos(Vector2Int(100, 500));
+	option_sliders[0]->setPos(Vector2Int(325, 518));
+	option_sliders[0]->setSize(Vector2Int(150, 50));
+	option_sliders[0]->setValue(audio->getVolume());
 
+	opt_txt.push_back(new TextAsset(font_def, "sound volume: "));
+	opt_txt[0]->setStartingPos(157, 527);
 
+	option_sliders.push_back(new UISlider( r, ap, k));
+	option_sliders[1]->setPos(Vector2Int(325, 592));
+	option_sliders[1]->setSize(Vector2Int(150, 50));
+	option_sliders[1]->setValue(.5f);
+
+	opt_txt.push_back(new TextAsset(font_def, " control sensitivity: "));
+	opt_txt[1]->setStartingPos(83, 607);
 	//SECOND PAGE
 
 	txts.push_back(new TextAsset(font_def, "In game"));
@@ -63,6 +75,7 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	active_first = true;
 	changeOptionHor(1);
 	n = 7;
+
 }
 
 OptionsScene::~OptionsScene()
@@ -77,7 +90,8 @@ void OptionsScene::update()
 		s->update();
 	}
 
-	//txts[n]->setStartingPos(mpos);
+	//opt_txt[1]->setStartingPos(mpos);
+	//option_sliders[1]->setPos(mpos);
 }
 
 void OptionsScene::events()
@@ -110,6 +124,7 @@ void OptionsScene::events()
 		if (!active_nav_btns)
 		{
 			option_sliders[hoption]->decreaseValue();
+			updateCurrentSlider();
 		}
 		else
 		{
@@ -123,6 +138,7 @@ void OptionsScene::events()
 		if (!active_nav_btns)
 		{
 			option_sliders[hoption]->increaseValue();
+			updateCurrentSlider();
 		}
 		else
 		{
@@ -175,6 +191,10 @@ void OptionsScene::draw()
 		for (UISlider* s : option_sliders)
 		{
 			s->draw();
+		}
+		for (TextAsset* t : opt_txt)
+		{
+			t->draw();
 		}
 
 		btns_txt[0]->draw(); // right arrow btn
@@ -233,4 +253,19 @@ void OptionsScene::changeOptionVer(int _new)
 		option_sliders[_new]->focus();
 
 	hoption = _new;
+}
+
+void OptionsScene::updateCurrentSlider()
+{
+	switch (hoption)
+	{
+	case 0:
+		 audio->setVolume(option_sliders[hoption]->getValue());
+		 break;
+	case 1:
+		//set control sensitivity
+		break;
+	default:
+		break;
+	}
 }

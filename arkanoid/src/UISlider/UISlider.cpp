@@ -55,7 +55,7 @@ void UISlider::update()
 	slider_dstR.y += rsize.y / 2 - slider_dstR.h / 2;
 	slider_dstR.x += (rsize.x - slider_dstR.w) / 2;
 	//Handle
-	handle_dstR.w = handle_dstR.h = 40; // size of handle
+	handle_dstR.w = handle_dstR.h = rsize.y/2; // size of handle
 
 	handle_dstR.y += rsize.y / 2 - handle_dstR.h / 2;
 	handle_dstR.x += (rsize.x - handle_dstR.w) * value;
@@ -94,6 +94,12 @@ void UISlider::setPrecision(float p)
 float UISlider::getValue()
 {
 	return value;
+}
+
+void UISlider::setValue(float v)
+{
+	if (v >= 0 && v <= 1)
+		value = v;
 }
 
 void UISlider::setPos(Vector2Int p)
