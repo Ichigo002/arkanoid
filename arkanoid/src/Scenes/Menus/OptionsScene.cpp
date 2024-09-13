@@ -17,21 +17,21 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	1 -> control sensitivity
 	*/
 
-	option_sliders.push_back(new UISlider( r, ap, k));
-	option_sliders[0]->setPos(Vector2Int(325, 518));
-	option_sliders[0]->setSize(Vector2Int(150, 50));
-	option_sliders[0]->setValue(audio->getVolume());
+	//option_sliders.push_back(new UISlider( r, ap, k));
+	//option_sliders[0]->setPos(Vector2Int(325, 518));
+	//option_sliders[0]->setSize(Vector2Int(150, 50));
+	//option_sliders[0]->setValue(audio->getVolume());
 
-	opt_txt.push_back(new TextAsset(font_def, "sound volume: "));
-	opt_txt[0]->setStartingPos(157, 527);
+	//opt_txt.push_back(new TextAsset(font_def, "sound volume: "));
+	//opt_txt[0]->setStartingPos(157, 527);
 
-	option_sliders.push_back(new UISlider( r, ap, k));
-	option_sliders[1]->setPos(Vector2Int(325, 592));
-	option_sliders[1]->setSize(Vector2Int(150, 50));
-	option_sliders[1]->setValue(audio->__control_sensitivity_option__);
+	//option_sliders.push_back(new UISlider( r, ap, k));
+	//option_sliders[1]->setPos(Vector2Int(325, 592));
+	//option_sliders[1]->setSize(Vector2Int(150, 50));
+	//option_sliders[1]->setValue(audio->__control_sensitivity_option__);
 
-	opt_txt.push_back(new TextAsset(font_def, " control sensitivity: "));
-	opt_txt[1]->setStartingPos(83, 607);
+	//opt_txt.push_back(new TextAsset(font_def, " control sensitivity: "));
+	//opt_txt[1]->setStartingPos(83, 607);
 	//SECOND PAGE
 
 	txts.push_back(new TextAsset(font_def, "In game"));
@@ -61,19 +61,19 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 
 	//=====================
 
-	btns_txt.push_back(new TextAsset(font_def_btn, "->"));
-	btns_txt[btns_txt.size() - 1]->setStartingPos(592, 703);
+	//btns_txt.push_back(new TextAsset(font_def_btn, "->"));
+	//btns_txt[btns_txt.size() - 1]->setStartingPos(592, 703);
 
-	btns_txt.push_back(new TextAsset(font_def_btn, "BACK"));
+	btns_txt.push_back(new TextAsset(font_hover_btn, "BACK"));
 	btns_txt[btns_txt.size() - 1]->setStartingPos(270, 703);
 
-	btns_txt.push_back(new TextAsset(font_def_btn, "<-"));
-	btns_txt[btns_txt.size() - 1]->setStartingPos(18, 703);
+	//btns_txt.push_back(new TextAsset(font_def_btn, "<-"));
+	//btns_txt[btns_txt.size() - 1]->setStartingPos(18, 703);
 
 	bg = TextureManager::load(r, "assets/Texture/bg_menu.png");
 
-	active_first = true;
-	changeOptionHor(1);
+	//active_first = true;
+	//changeOptionHor(1);
 	n = 7;
 
 }
@@ -85,10 +85,10 @@ OptionsScene::~OptionsScene()
 void OptionsScene::update()
 {
 	Scene::update();
-	for (UISlider* s : option_sliders)
-	{
-		s->update();
-	}
+	//for (UISlider* s : option_sliders)
+	//{
+	//	s->update();
+	//}
 
 	//opt_txt[1]->setStartingPos(mpos);
 	//option_sliders[1]->setPos(mpos);
@@ -97,86 +97,87 @@ void OptionsScene::update()
 void OptionsScene::events()
 {
 	Scene::events();
-	for (UISlider* s : option_sliders)
-	{
-		s->events();
-	}
+	//for (UISlider* s : option_sliders)
+	//{
+	//	s->events();
+	//}
 
 	//DEVELOPER
-	if (kj->getPressedKey(SDLK_j))
-	{
-		if(n < txts.size()-1)
-			n++;
-		std::cout << "Item pos: " << mpos << std::endl;
+	//if (kj->getPressedKey(SDLK_j))
+	//{
+	//	if(n < txts.size()-1)
+	//		n++;
+	//	std::cout << "Item pos: " << mpos << std::endl;
 
-		std::cout << "Option sldiers size: " << option_sliders.size() << std::endl;
-	}
+	//	std::cout << "Option sldiers size: " << option_sliders.size() << std::endl;
+	//}
 
-	if (kj->getEventData()->type == SDL_MOUSEMOTION)
-	{
-		mpos.x = kj->getEventData()->button.x;
-		mpos.y = kj->getEventData()->button.y;
-	}
-	// --------
+	//if (kj->getEventData()->type == SDL_MOUSEMOTION)
+	//{
+	//	mpos.x = kj->getEventData()->button.x;
+	//	mpos.y = kj->getEventData()->button.y;
+	//}
+	//// --------
 
-	if (kj->getAction_Prev_Hor())
-	{
-		if (!active_nav_btns)
-		{
-			option_sliders[hoption]->decreaseValue();
-			updateCurrentSlider();
-		}
-		else
-		{
-			audio->playSound(0);
-			changeOptionHor(moption + 1);
-		}
-	}
+	//if (kj->getAction_Prev_Hor())
+	//{
+	//	if (!active_nav_btns)
+	//	{
+	//		option_sliders[hoption]->decreaseValue();
+	//		updateCurrentSlider();
+	//	}
+	//	else
+	//	{
+	//		audio->playSound(0);
+	//		changeOptionHor(moption + 1);
+	//	}
+	//}
 
-	if (kj->getAction_Next_Hor())
-	{
-		if (!active_nav_btns)
-		{
-			option_sliders[hoption]->increaseValue();
-			updateCurrentSlider();
-		}
-		else
-		{
-			audio->playSound(0);
-			changeOptionHor(moption - 1);
-		}
-	}
+	//if (kj->getAction_Next_Hor())
+	//{
+	//	if (!active_nav_btns)
+	//	{
+	//		option_sliders[hoption]->increaseValue();
+	//		updateCurrentSlider();
+	//	}
+	//	else
+	//	{
+	//		audio->playSound(0);
+	//		changeOptionHor(moption - 1);
+	//	}
+	//}
 
 	//-------
 
-	if (kj->getAction_Next())
-	{
-		audio->playSound(0);
-		changeOptionVer(hoption + 1);
-	}
-	if (kj->getAction_Prev())
-	{
-		audio->playSound(0);
-		changeOptionVer(hoption - 1);
-	}
+	//if (kj->getAction_Next())
+	//{
+	//	audio->playSound(0);
+	//	changeOptionVer(hoption + 1);
+	//}
+	//if (kj->getAction_Prev())
+	//{
+	//	audio->playSound(0);
+	//	changeOptionVer(hoption - 1);
+	//}
 	// LOADING
-	if (kj->getAction_Accept() && active_nav_btns)
+	if (kj->getAction_Accept())
 	{
-		audio->playSound(1);
-		switch (moption)
-		{
-		case 0:
-			active_first = false;
-			changeOptionHor(2);
-			break;
-		case 1:
-			loadScene(0);
-			break;
-		case 2:
-			active_first = true;
-			changeOptionHor(0);
-			break;
-		}
+		loadScene(0);
+		//audio->playSound(1);
+		//switch (moption)
+		//{
+		//case 0:
+		//	active_first = false;
+		//	changeOptionHor(2);
+		//	break;
+		//case 1:
+		//	
+		//	break;
+		//case 2:
+		//	active_first = true;
+		//	changeOptionHor(0);
+		//	break;
+		//}
 	}
 }
 
@@ -184,26 +185,26 @@ void OptionsScene::draw()
 {
 	SDL_RenderCopy(ren, bg, NULL, NULL);
 
-	btns_txt[1]->draw(); // buttton: "BACK"
+	btns_txt[0]->draw(); // buttton: "BACK"
 
-	if (active_first)
-	{
-		for (UISlider* s : option_sliders)
-		{
-			s->draw();
-		}
-		for (TextAsset* t : opt_txt)
-		{
-			t->draw();
-		}
+	//if (active_first)
+	//{
+	//	for (UISlider* s : option_sliders)
+	//	{
+	//		s->draw();
+	//	}
+	//	for (TextAsset* t : opt_txt)
+	//	{
+	//		t->draw();
+	//	}
 
-		btns_txt[0]->draw(); // right arrow btn
-	}
-	else 
-	{
+	//	btns_txt[0]->draw(); // right arrow btn
+	//}
+	//else 
+	//{
 		Scene::draw();
-		btns_txt[2]->draw(); // left arrow btn
-	}
+		//btns_txt[2]->draw(); // left arrow btn
+	//}
 }
 
 void OptionsScene::OnLoad()
@@ -216,56 +217,56 @@ void OptionsScene::OnUnload()
 	Scene::OnUnload();
 }
 
-void OptionsScene::changeOptionHor(int _new)
-{
-	if (_new < (active_first ? 0 : 1))
-		_new = btns_txt.size() - (active_first ? 2 : 1);
-	else if (_new >= (active_first ? btns_txt.size() - 1 : btns_txt.size()))
-		_new = (active_first ? 0 : 1);
+//void OptionsScene::changeOptionHor(int _new)
+//{
+//	if (_new < (active_first ? 0 : 1))
+//		_new = btns_txt.size() - (active_first ? 2 : 1);
+//	else if (_new >= (active_first ? btns_txt.size() - 1 : btns_txt.size()))
+//		_new = (active_first ? 0 : 1);
+//
+//	btns_txt[moption]->setNewFontAsset(font_def_btn);
+//	btns_txt[_new]->setNewFontAsset(font_hover_btn);
+//
+//	moption = _new;
+//}
 
-	btns_txt[moption]->setNewFontAsset(font_def_btn);
-	btns_txt[_new]->setNewFontAsset(font_hover_btn);
+//void OptionsScene::changeOptionVer(int _new)
+//{
+//	if (!active_first)
+//		return;
+//
+//	int size = option_sliders.size() -1;
+//
+//	if (_new < 0)
+//	{
+//		_new = size;
+//		active_nav_btns = !active_nav_btns;
+//	}
+//
+//	if (_new > size)
+//	{
+//		active_nav_btns = !active_nav_btns;
+//		_new = 0;
+//	}
+//
+//	option_sliders[hoption]->unfocus();
+//	if(!active_nav_btns)
+//		option_sliders[_new]->focus();
+//
+//	hoption = _new;
+//}
 
-	moption = _new;
-}
-
-void OptionsScene::changeOptionVer(int _new)
-{
-	if (!active_first)
-		return;
-
-	int size = option_sliders.size() - 1;
-
-	if (_new < 0)
-	{
-		_new = size;
-		active_nav_btns = !active_nav_btns;
-	}
-
-	if (_new > size)
-	{
-		active_nav_btns = !active_nav_btns;
-		_new = 0;
-	}
-
-	option_sliders[hoption]->unfocus();
-	if(!active_nav_btns)
-		option_sliders[_new]->focus();
-
-	hoption = _new;
-}
-
-void OptionsScene::updateCurrentSlider()
-{
-	switch (hoption)
-	{
-	case 0:
-		audio->setVolume(option_sliders[hoption]->getValue());
-		break;
-	case 1:
-		audio->__control_sensitivity_option__ = option_sliders[hoption]->getValue();
-		break;
-	default:
-		break;
-	}
-}
+//void OptionsScene::updateCurrentSlider()
+//{
+//	switch (hoption)
+//	{
+//	case 0:
+//		audio->setVolume(option_sliders[hoption]->getValue());
+//		break;
+//	case 1:
+//		audio->__control_sensitivity_option__ = option_sliders[hoption]->getValue();
+//		break;
+//	default:
+//		break;
+//	}
+//}

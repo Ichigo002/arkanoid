@@ -12,8 +12,8 @@ MenuScene::MenuScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	txts.push_back(new TextAsset(font_def, "PLAY"));
 	txts[txts.size() - 1]->setStartingPos(250, 500);
 
-	txts.push_back(new TextAsset(font_def, "OPTIONS"));
-	txts[txts.size() - 1]->setStartingPos(183, 572);
+	txts.push_back(new TextAsset(font_def, "HOW TO PLAY"));
+	txts[txts.size() - 1]->setStartingPos(100, 572);
 
 	txts.push_back(new TextAsset(font_def, "EXIT"));
 	txts[txts.size() - 1]->setStartingPos(252, 644);

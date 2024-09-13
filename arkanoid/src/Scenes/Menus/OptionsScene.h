@@ -20,27 +20,27 @@ public:
 	virtual void OnLoad();
 	virtual void OnUnload();
 
-protected:
-	void changeOptionHor(int _new);
-	void changeOptionVer(int _new);
-
-	void updateCurrentSlider();
+//protected:
+//	void changeOptionHor(int _new);
+//	void changeOptionVer(int _new);
+//
+//	void updateCurrentSlider();
 
 protected:
 	SDL_Texture* bg;
-	Vector2Int mpos;
+	//Vector2Int mpos;
 	FontAsset* font_hover_btn;
 	FontAsset* font_def_btn;
 	UISlider* slider;
-	int moption; // current menu option
-	int hoption; // current sldier option
+	//int moption; // current menu option
+	//int hoption; // current sldier option
 
 	std::vector<TextAsset*> btns_txt;
 	std::vector<TextAsset*> opt_txt;
-	std::vector<UISlider*> option_sliders;
+	//std::vector<UISlider*> option_sliders;
 
-	bool active_first; // first page in opitons active
-	bool active_nav_btns = false; // true if now controls back and arrows
+	//bool active_first; // first page in opitons active
+	//bool active_nav_btns = false; // true if now controls back and arrows
 	int n;
 };
 
