@@ -76,6 +76,8 @@ OptionsScene::OptionsScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	//changeOptionHor(1);
 	n = 7;
 
+
+
 }
 
 OptionsScene::~OptionsScene()

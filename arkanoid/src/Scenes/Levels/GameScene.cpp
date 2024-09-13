@@ -8,6 +8,7 @@ GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	
 	SDL_Color c = { 255, 0, 0 };
 	font_def = new FontAsset(r, "assets/Fonts/prstart.ttf", 26, c);
+	font_lose_text = new FontAsset(r, "assets/Fonts/pixelmania.ttf", 28, c);
 
 	// size: 675x720 + 0x10
 	// pos: 0x50
@@ -16,6 +17,9 @@ GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	lvl_bg_dstR.w = 675;
 	lvl_bg_dstR.h = 730;
 
+	lose_live_text = new TextAsset(font_lose_text, "YOU LOSE 1 LIFE");
+	lose_live_text->setStartingPos(50, 500);
+	lose_life = false;
 }
 
 GameScene::~GameScene()
@@ -26,13 +30,24 @@ void GameScene::update()
 {
 	Scene::update();
 
+
 	updateBricks();
 	updateMapBorders();
 	updatePaddle();
 	updateLogic();
 	updateCounters();
-	 
-	ball->update();
+
+	if (lose_life)
+	{
+		std::cout << "Delta tick for lose: " << SDL_GetTicks64() - start_tick_lose << std::endl;
+		if (SDL_GetTicks64() - start_tick_lose > pause_time_for_lose)
+		{
+			lose_life = false;
+		}
+	}
+	else {
+		ball->update();
+	}
 }
 
 void GameScene::updateBricks()
@@ -108,6 +123,8 @@ void GameScene::updateLogic()
 	// lose 1 live
 	if (ball->getBottomBound() > paddle->getPos().y + 200)
 	{
+		lose_life = true;
+		start_tick_lose = SDL_GetTicks64();
 		lives--;
 		ball->setPos(Vector2Int(300, 460));
 		float v;
@@ -180,6 +197,9 @@ void GameScene::draw()
 	{
 		b->draw();
 	}
+
+	if (lose_life)
+		lose_live_text->draw();
 }
 
 void GameScene::OnLoad()

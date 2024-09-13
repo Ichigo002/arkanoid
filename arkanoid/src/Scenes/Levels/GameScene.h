@@ -62,6 +62,13 @@ protected:
 	Ball* ball;
 	std::vector<Brick*> bricks;
 
+	FontAsset* font_lose_text;
+	TextAsset* lose_live_text; // lose text
+	bool lose_life;
+	Uint64 start_tick_lose;
+	int pause_time_for_lose = 2000; //[ms]
+	
+
 	int hit_points;
 	int combo_counter;
 
