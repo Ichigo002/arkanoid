@@ -8,7 +8,7 @@ GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	
 	SDL_Color c = { 255, 0, 0 };
 	font_def = new FontAsset(r, "assets/Fonts/prstart.ttf", 26, c);
-	font_lose_text = new FontAsset(r, "assets/Fonts/pixelmania.ttf", 28, c);
+	font_info_text = new FontAsset(r, "assets/Fonts/pixelmania.ttf", 28, c);
 
 	// size: 675x720 + 0x10
 	// pos: 0x50
@@ -17,9 +17,9 @@ GameScene::GameScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	lvl_bg_dstR.w = 675;
 	lvl_bg_dstR.h = 730;
 
-	lose_live_text = new TextAsset(font_lose_text, "YOU LOSE 1 LIFE");
-	lose_live_text->setStartingPos(50, 500);
-	lose_life = false;
+	info_text = new TextAsset(font_info_text, "YOU LOSE 1 LIFE");
+	info_text->setStartingPos(50, 500);
+	display_text = false;
 }
 
 GameScene::~GameScene()
@@ -37,12 +37,12 @@ void GameScene::update()
 	updateLogic();
 	updateCounters();
 
-	if (lose_life)
+	if (display_text)
 	{
-		std::cout << "Delta tick for lose: " << SDL_GetTicks64() - start_tick_lose << std::endl;
-		if (SDL_GetTicks64() - start_tick_lose > pause_time_for_lose)
+		//std::cout << "Delta tick for lose: " << SDL_GetTicks64() - start_tick_info << std::endl;
+		if (SDL_GetTicks64() - start_tick_info > pause_time_for_lose)
 		{
-			lose_life = false;
+			display_text = false;
 		}
 	}
 	else {
@@ -123,8 +123,9 @@ void GameScene::updateLogic()
 	// lose 1 live
 	if (ball->getBottomBound() > paddle->getPos().y + 200)
 	{
-		lose_life = true;
-		start_tick_lose = SDL_GetTicks64();
+		display_text = true;
+		start_tick_info = SDL_GetTicks64();
+		info_text->setText("YOU LOSE 1 LIFE");
 		lives--;
 		ball->setPos(Vector2Int(300, 460));
 		float v;
@@ -145,7 +146,12 @@ void GameScene::updateLogic()
 	if (bricks.size() == 0)
 	{
 		curr_index_lvl++;
-		loadLvl(curr_index_lvl);
+		display_text = true;
+		start_tick_info = SDL_GetTicks64();
+		info_text->setText("YOU PASSED LEVEL");
+
+		loadLvl(curr_index_lvl);		
+
 	}
 }
 
@@ -198,8 +204,8 @@ void GameScene::draw()
 		b->draw();
 	}
 
-	if (lose_life)
-		lose_live_text->draw();
+	if (display_text)
+		info_text->draw();
 }
 
 void GameScene::OnLoad()
@@ -257,6 +263,10 @@ void GameScene::loadLvl(int lvl)
 
 	paddle->setCenterPos();
 	paddle->scale = .4f;
+
+	display_text = true;
+	start_tick_info = SDL_GetTicks64();
+	info_text->setText("");
 
 
 	// Every case is single level

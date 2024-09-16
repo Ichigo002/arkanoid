@@ -62,10 +62,10 @@ protected:
 	Ball* ball;
 	std::vector<Brick*> bricks;
 
-	FontAsset* font_lose_text;
-	TextAsset* lose_live_text; // lose text
-	bool lose_life;
-	Uint64 start_tick_lose;
+	FontAsset* font_info_text;
+	TextAsset* info_text;
+	bool display_text;
+	Uint64 start_tick_info;
 	int pause_time_for_lose = 2000; //[ms]
 	
 
