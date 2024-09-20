@@ -67,6 +67,8 @@ protected:
 	bool display_text;
 	Uint64 start_tick_info;
 	int pause_time_for_lose = 2000; //[ms]
+
+	bool first_game = false;
 	
 
 	int hit_points;

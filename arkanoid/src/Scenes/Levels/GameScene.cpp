@@ -126,6 +126,7 @@ void GameScene::updateLogic()
 		display_text = true;
 		start_tick_info = SDL_GetTicks64();
 		info_text->setText("YOU LOSE 1 LIFE");
+		info_text->setStartingPos(50, 500);
 		lives--;
 		ball->setPos(Vector2Int(300, 460));
 		float v;
@@ -148,7 +149,8 @@ void GameScene::updateLogic()
 		curr_index_lvl++;
 		display_text = true;
 		start_tick_info = SDL_GetTicks64();
-		info_text->setText("YOU PASSED LEVEL");
+		info_text->setText("YOU PASSED LVL"); 
+		info_text->setStartingPos(50, 500);
 
 		loadLvl(curr_index_lvl);		
 
@@ -185,6 +187,8 @@ void GameScene::events()
 	if (kj->getAction_Accept())
 	{
 		std::cout << mpos << std::endl;
+
+		bricks.clear();
 	}
 }
 
@@ -211,6 +215,7 @@ void GameScene::draw()
 void GameScene::OnLoad()
 {
 	Scene::OnLoad();
+	first_game = true;
 
 	paddle = new Player(ren, audio, kj);
 	ball = new Ball(ren);
@@ -266,7 +271,12 @@ void GameScene::loadLvl(int lvl)
 
 	display_text = true;
 	start_tick_info = SDL_GetTicks64();
-	info_text->setText("");
+	if (first_game)
+	{
+		first_game = false;
+		info_text->setText("GET READY");
+		info_text->setStartingPos(130, 500);
+	}
 
 
 	// Every case is single level
