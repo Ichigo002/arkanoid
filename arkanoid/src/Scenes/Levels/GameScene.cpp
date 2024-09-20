@@ -188,9 +188,9 @@ void GameScene::events()
 	}
 	if (kj->getAction_Accept())
 	{
-		std::cout << mpos << std::endl;
+		//std::cout << mpos << std::endl;
 
-		bricks.clear();
+		//bricks.clear();
 	}
 }
 
