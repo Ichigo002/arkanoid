@@ -9,6 +9,9 @@ LoseScene::LoseScene(SDL_Renderer* r, AudioPlayer* ap, KeyJoy* k)
 	c = { 244, 32, 32 };
 	font_hover = new FontAsset(r, "assets/Fonts/Pixelmania.ttf", 30, c);
 
+	point_txt = new TextAsset(font_def);
+	point_txt->setStartingPos(70, 400);
+
 	txts.push_back(new TextAsset(font_def, "RESTART"));
 	txts[txts.size() - 1]->setStartingPos(178, 640);
 
@@ -79,6 +82,7 @@ void LoseScene::events()
 void LoseScene::draw()
 {
 	SDL_RenderCopy(ren, bg, NULL, NULL);
+	point_txt->draw();
 
 	Scene::draw();
 }
@@ -86,6 +90,9 @@ void LoseScene::draw()
 void LoseScene::OnLoad()
 {
 	Scene::OnLoad();
+	std::string tmp_txt = "SCORE IS " + std::to_string(audio->__total_points__);
+	point_txt->setText(tmp_txt);
+
 }
 
 void LoseScene::OnUnload()

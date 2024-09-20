@@ -39,6 +39,8 @@ public:
 	void events();
 	void update();
 	void draw();
+
+	int total_points;
 private:
 	bool validateId(int id);
 

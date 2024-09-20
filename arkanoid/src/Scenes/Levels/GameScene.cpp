@@ -139,8 +139,10 @@ void GameScene::updateLogic()
 		
 		if (lives == 0)
 		{
+			audio->__total_points__ = points;
 			//you loser
 			loadScene(3);
+
 		}
 	}
 	// win this lvl
@@ -321,7 +323,8 @@ void GameScene::loadLvl(int lvl)
 	break;
 
 	default: // Win scene loading later
-		loadScene(1);
+		audio->__total_points__ = points;
+		loadScene(4);
 		return;
 	}
 

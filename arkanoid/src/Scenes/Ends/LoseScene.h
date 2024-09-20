@@ -26,6 +26,8 @@ protected:
 	SDL_Texture* bg;
 	Vector2Int mpos;
 	FontAsset* font_hover;
+	TextAsset* point_txt;
+
 	int moption; // current menu option
 };
 
